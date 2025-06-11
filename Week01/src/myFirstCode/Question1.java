@@ -1,10 +1,9 @@
 package myFirstCode;
 
+import javax.swing.JOptionPane;
+
 public class Question1 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+    public static void main(String[] args) {
+        JOptionPane.showMessageDialog(null, "Hello, World!");
+    }
 }
