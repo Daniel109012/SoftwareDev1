@@ -2,7 +2,7 @@ package myFirstCode;
 import javax.swing.JOptionPane;
 
 
-public class Question04 {
+public class Question4 {
 	public static void main(String[] args) {
 
 		/*
