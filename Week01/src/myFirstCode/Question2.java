@@ -27,7 +27,7 @@ public class Question2 {
     	Output = "The Result of " + Num1 + " Divided by " + Num2 + " is " + result;
     	 
     	JOptionPane.showMessageDialog(null, Output, "Result",
-    			JOptionPane.PLAIN_MESSAGE);
+    			JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
