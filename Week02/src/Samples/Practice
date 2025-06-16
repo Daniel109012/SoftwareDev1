@@ -1,0 +1,35 @@
+Tutorial Questions
+
+1.	Write a program that reads in two integers from the keyboard and displays: 
+•	the value of them added together 
+•	the value of them multiplied together. 
+The program should also print a message saying which of the numbers is the largest. Make sure that your program can handle the numbers if they are equal.
+
+2.	Write a program that reads in an integer then determines and prints whether it is odd or even.
+
+3.	Write a program that will test whether a character entered is a vowel or not and will display an appropriate message as a result.  Here is the start of the program up to reading in and converting to a character, after that you need to test if it is a vowel or not.
+
+String output;
+String charAsString;
+Char theChar;
+
+charAsString = JOptionPane.showInputDialog("please enter a character");
+theChar = charAsString.charAt(0);
+
+4.	Develop a program that will calculate the pay for children who deliver newspapers.  The pay is calculated as follows: 
+1 – 100 copies   10 pence per paper
+101 or more      15  pence per paper
+For example, if somebody delivers 105 papers then their pay would be
+(100 x 10) + (5 x 15) = 1075 pence or 10 pounds and 75 pence
+
+Write a program that asks for the number of papers delivered and calculates and displays the amount earned.
+
+5.	Extend your solution to the previous question to calculate the pay as follows.  
+1 – 100 copies      10 pence per paper
+101  - 150 copies 15  pence per paper 
+151	 more         20 pence per paper
+
+6.   Write a program that inputs a series of 10 numbers and determines and prints the largest of the numbers and the smallest of the numbers.
+
+7.	 Write a program that inputs 10 student's marks. At the end, the program should print a message saying how many students have passed and how many students have failed. The pass mark is 50%.
+
