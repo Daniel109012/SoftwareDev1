@@ -24,7 +24,7 @@ public class Question5 {
 		Result = mult * .25;
 		Add = Result + mult;
 		
-		Output = "The increase of " + mult + "by 25% is " + Add;
+		Output = "The increase of " + mult + " by 25% is " + Add;
 		
 		JOptionPane.showMessageDialog(null, Output, "Result",
 				JOptionPane.INFORMATION_MESSAGE);
