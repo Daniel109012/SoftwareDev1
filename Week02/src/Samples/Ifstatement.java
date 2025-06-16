@@ -1,4 +1,4 @@
-package Unit02;
+package Samples;
 
 import javax.swing.JOptionPane;
 
