@@ -1,4 +1,4 @@
-package Week02;
+package Unit02;
 
 import javax.swing.JOptionPane;
 
