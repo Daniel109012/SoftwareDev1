@@ -10,12 +10,14 @@ public class RandomNum {
 		int num;
 		
 		Random numGenerator = new Random();
+		
+		for(int count = 0; count < 10; count++) {
 		num = numGenerator.nextInt(9);
 		
 		output = "You got a " + num;
 		
 		JOptionPane.showMessageDialog(null, output);
-		
+		}
 
 	}
 
