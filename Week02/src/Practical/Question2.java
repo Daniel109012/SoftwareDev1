@@ -8,6 +8,7 @@ public class Question2 {
 		/*
 		 * 2.	Write a program that reads in an integer then determines and prints whether it is odd or even.
 		 */
+		
 		String Input;
 		String Output;
 		int Num;
@@ -15,6 +16,8 @@ public class Question2 {
 		
 		Input = JOptionPane.showInputDialog("Eenter a Number");
 		Num = Integer.parseInt(Input);
+		
+		//Using Modulus to verify the remainder
 		
 		if (Num % 2 == 0 ) {
 			Output = Num + " Is an Even Number";
