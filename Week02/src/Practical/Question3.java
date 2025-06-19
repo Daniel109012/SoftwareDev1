@@ -12,7 +12,6 @@ public class Question3 {
 		
 		String Input;
 		String Output;
-		char Vowel;
 		char Letter;
 		
 		Input = JOptionPane.showInputDialog("Enter a Letter to verify Vowel");		
