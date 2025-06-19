@@ -19,6 +19,8 @@ public class Question4 {
 		String Input;
 		String Output = "";
 		int TPence;
+		int pounds;
+		int Pence;
 		int Copies;
 		
 		Input = JOptionPane.showInputDialog("enter the amount of newspapers Copies sold");
@@ -26,11 +28,14 @@ public class Question4 {
 		
 		if(Copies <= 100) {
 			TPence = Copies * 10;
-			Output = "The amount earned is " + TPence;
+			pounds = TPence / 10;
+			Output = "The amount earned is " + TPence + " or " + pounds + " Pounds";
 		} else {
 			if(Copies > 100) {
 			TPence = (Copies - 100) * 15 + (100 * 10);
-			Output = "The amount earned is " + TPence;
+			pounds = TPence / 10;
+			Pence = (TPence % pounds);
+			Output = "The amount earned is " + TPence + " or " + pounds + " Pounds " + Pence + " Pence";
 			}
 		}
 		
