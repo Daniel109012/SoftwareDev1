@@ -11,7 +11,7 @@ public class Question6 {
 		 */
 		
 
-		String Rand = "";
+		//String Rand = "";
 		int[] Number = new int[10];
 		
 
@@ -21,7 +21,7 @@ public class Question6 {
 		while(count < 10) {
 			Number[count] = numGenerator.nextInt(100);
 			
-			Rand = Rand + Number + "\n";
+			//Rand = Rand + Number + "\n";
 			
 			count++;
 			
