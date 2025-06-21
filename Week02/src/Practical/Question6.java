@@ -10,21 +10,13 @@ public class Question6 {
 		 * 6.   Write a program that inputs a series of 10 numbers and determines and prints the largest of the numbers and the smallest of the numbers.
 		 */
 		
-
-		//String Rand = "";
 		int[] Number = new int[10];
-		
-
 		int count = 0;
 		Random numGenerator = new Random();
 		
 		while(count < 10) {
 			Number[count] = numGenerator.nextInt(100);
-			
-			//Rand = Rand + Number + "\n";
-			
-			count++;
-			
+			count++;		
 		}
 		
 		int maxNum = Number[0];

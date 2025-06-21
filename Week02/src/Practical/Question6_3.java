@@ -11,9 +11,8 @@ public static void main(String[] args){
          */
 
 	 	int[] numbers = new int[10];
- 
-	 		int maxNum = Integer.MIN_VALUE;
-	 		int minNum = Integer.MAX_VALUE;
+	 	int maxNum = Integer.MIN_VALUE;
+	 	int minNum = Integer.MAX_VALUE;
 
 	 			String message = "The entered numbers are: \n";
 

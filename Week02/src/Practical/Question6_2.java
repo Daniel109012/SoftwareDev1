@@ -16,7 +16,6 @@ public class Question6_2 {
 
 		int[] numbers = new int[10];
 		Random numGenerator = new Random();
- 
 		int maxNum = Integer.MIN_VALUE;
 		int minNum = Integer.MAX_VALUE;
 
