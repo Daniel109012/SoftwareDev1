@@ -18,13 +18,22 @@ public class Question7 {
  			for (int i = 0; i < 10; i++) {
  				input = JOptionPane.showInputDialog(null, "Enter Grades " + (i + 1) + ":");
  				numbers[i] = Integer.parseInt(input); // This line might throw NumberFormatException
- 				message += numbers[i] + " %\n";
+ 				//message += numbers[i] + " %\n";
+ 				
+	 				if(numbers[i] >= passMark) {
+	 					message += numbers[i] + " % : 	Passed\n";
+ 	 					passMark++;
+ 	 				}else {
+ 	 					message += numbers[i] + " % : 	 Faild \n";
+ 	 					passMark++;
+
+ 	 				}
  				
  				while(numbers[i] < 0 || numbers[i] > 100) {
  	 	 			
  					input = JOptionPane.showInputDialog(null, "Please enter a valid Grade " + (i + 1) + ":");
  					numbers[i] = Integer.parseInt(input);
- 					message += numbers[i] + " %\n";
+ 					//message += numbers[i] + " %\n";
  	 	 		}
  			
  	 				if(numbers[i] >= passMark) {
