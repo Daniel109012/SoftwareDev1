@@ -23,6 +23,7 @@ public class Question2 {
     	Num2 = Integer.parseInt(secNum); 
     	
     	result = Num1 / Num2;
+    	//should add a % formula to get remainder
     	
     	Output = "The Result of " + Num1 + " Divided by " + Num2 + " is " + result;
     	 

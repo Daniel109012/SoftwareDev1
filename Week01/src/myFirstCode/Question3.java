@@ -19,6 +19,7 @@ public class Question3 {
 		
 		double result;
 		result = number / 2;
+		//should add a % formula to get remainder
 		
 		Output = "The result of " + number + "divided by 2 is " + result;
 		
