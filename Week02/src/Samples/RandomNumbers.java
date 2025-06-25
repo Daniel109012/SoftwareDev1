@@ -3,7 +3,7 @@ package Samples;
 import javax.swing.JOptionPane;
 import java.util.Random;
 
-public class W207RandomNumbers {
+public class RandomNumbers {
 	public static void main(String[] args) {
 		String output;
 		int num;
