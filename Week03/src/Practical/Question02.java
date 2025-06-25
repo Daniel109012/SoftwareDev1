@@ -3,7 +3,9 @@ package Practical;
 public class Question02 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		/*
+		 * 2.	Write a program that inputs 10 student's marks. At the end, the program should print a message saying how many students have passed and how many students have failed. The pass mark is 50%.
+		 */
 
 	}
 
