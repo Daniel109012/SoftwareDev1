@@ -5,3 +5,4 @@ Tutorial Questions
 2.	Write a program that inputs 10 student's marks. At the end, the program should print a message saying how many students have passed and how many students have failed. The pass mark is 50%.
 
 3.	Modify question 2 so that all marks must be between 0 and 100 inclusive.  For each input, if the mark entered is outside this range keep looping until the user enters a correct value (i.e validate the input).
+( was already done on Question7 week 2 and question 2 week 3 )
