@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class RandomNum {
 
 	public static void main(String[] args) {
-		String output;
+		String output = "";
 		int num;
 		Random numGenerator = new Random();
 		
@@ -15,7 +15,7 @@ public class RandomNum {
 		
 			num = numGenerator.nextInt(9);
 		
-			output = "you got a Number " + num;
+			output = "you got a Number " + num + " \n";
 		
 			JOptionPane.showMessageDialog(null, output);
 		

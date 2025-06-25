@@ -10,21 +10,37 @@ public class Question01 {
 		 * 1.	Write a program that inputs a series of 10 numbers and determines and prints the largest of the numbers and the smallest of the numbers.
 		 */
 		
-		String Output;
+		String Output = "";
 		int Num;
-		
-		int maxNum;
-		int minNum;
+		int count = 0;
+		int minNum = Integer.MAX_VALUE;
+		int maxNum = Integer.MIN_VALUE;
 		
 		Random Numbers = new Random();
 		
-		for(int count = 0; count < 10; count++) {
+		
+		while(count < 10) {
 			Num = Numbers.nextInt(20);
+			Output += Num + " \n";
+			count++;	
 			
-			Output = "You Got " + Num + " \n";
+			if(Num > maxNum) {
+				maxNum = Num;
+			}
 			
-			JOptionPane.showMessageDialog(null, Output);
+			if(Num < minNum) {
+				minNum = Num;	
+			}
+			
+
+			
 		}
+		
+		Output += "\nThe Largest number is: " + maxNum;
+		Output += "\nThe Smallest number is: " + minNum;
+			
+
+		JOptionPane.showMessageDialog(null, Output);
 		
 		
 		
