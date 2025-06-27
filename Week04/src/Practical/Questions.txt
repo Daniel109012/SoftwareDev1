@@ -1,0 +1,19 @@
+Tutorial Questions
+
+
+1.	Write a program that reads 5 numbers into an array and prints out the value of each number that has a value less than 10.
+
+2.	Write a program to read in 5 people’s salaries and work out the tax to be paid (at 25%) for each salary.
+
+3.	Write a program to read in 10 student's marks (integers between 0 and 100). Store the results in an integer array. The program should print out the frequency of the grades achieved. The program should also validate the marks as they are entered.
+
+
+mark	grade
+	
+75 - 100	A
+60 – 74		B
+50 - 59		C
+0 - 50		F
+
+
+4.	 Explore two-dimensional arrays
