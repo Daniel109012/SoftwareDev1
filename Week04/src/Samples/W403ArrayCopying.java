@@ -2,6 +2,7 @@ package Samples;
 
 import javax.swing.JOptionPane;
 import java.util.Arrays;
+@SuppressWarnings("unused")
 
 public class W403ArrayCopying {
 	public static void main(String[] args) {
@@ -31,7 +32,7 @@ public class W403ArrayCopying {
 		// print message
 		JOptionPane.showMessageDialog(null, output);
 	
-		//create ouput for array 2
+		//create output for array 2
 		output = "Array2:    ";
 		for(int loop = 0; loop < array2.length; loop++) {
 			output = output +array2[loop] + "  ";
