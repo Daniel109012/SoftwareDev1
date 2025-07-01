@@ -1,6 +1,7 @@
 package Practical;
 
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 public class Question02 {
 
@@ -21,23 +22,42 @@ public class Question02 {
 		String output = "";
 		float mIncome;
 		float[] Array = new float[5];
-		float tax = (float)0.25;
+		float tax = (float).25;
+		float annualIncome;
+		float taxIncome;
+		float incomeTax;
+		float monthTax = 0;
+		float totalS;
 		float relief = 20000;
 		
 		
 		
-		for(int count = 0; count < 5; count++) {
+		for(int count = 0; count < Array.length; count++) {
 		input = JOptionPane.showInputDialog("Enter the salaries for Employees: " + (count + 1) + " \n");	
 		mIncome = Float.parseFloat(input);
 		Array[count] = mIncome;	
 		}//end for loop
 		
 		output = "Tax per Salary is: \n ";
-			for(int count = 0; count < 5; count++) {
-				if(Array[count] <= relief) {
-					output = output + Array[count] + " \n";
-				}
-		}
+		
+			for(int count = 0; count < Array.length; count++) {
+				annualIncome = Array[count] * 12;
+				taxIncome = annualIncome - relief;
+				incomeTax = taxIncome * tax;
+				monthTax = incomeTax / 12;
+				totalS = Array[count] - monthTax;
+				
+				if(annualIncome > relief) {
+					DecimalFormat df = new DecimalFormat("0.00"); // "0.00" ensures two decimal places
+					String monthTax2D = df.format(monthTax);
+					output = output + (count + 1) + ": " + Array[count] + ": tax to be paid end of month is "  + monthTax2D + " \n";
+				} //end if
+				
+				if(annualIncome < relief) {
+					output = output + (count + 1) + ": " + Array[count] + ": no Tax to be colected \n";
+				}//end if
+
+			}//end for loop
 		
 		JOptionPane.showMessageDialog(null, output);
 		
