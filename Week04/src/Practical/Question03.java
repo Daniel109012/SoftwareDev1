@@ -12,6 +12,13 @@ public class Question03 {
 			50 - 59		C
 			0 - 50		F
 		 */
+		
+		String input;
+		String output;
+		int markNumber = 4;
+		int[] theMarks = new int[markNumber];
+		int marks ;
+		int grades;
 
 	}
 
