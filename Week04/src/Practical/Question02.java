@@ -27,7 +27,7 @@ public class Question02 {
 		float taxIncome;
 		float incomeTax;
 		float monthTax = 0;
-		float totalS;
+		//float totalS;
 		float relief = 20000;
 		
 		
@@ -45,7 +45,7 @@ public class Question02 {
 				taxIncome = annualIncome - relief;
 				incomeTax = taxIncome * tax;
 				monthTax = incomeTax / 12;
-				totalS = Array[count] - monthTax;
+				//totalS = Array[count] - monthTax;
 				
 				if(annualIncome > relief) {
 					DecimalFormat df = new DecimalFormat("0.00"); // "0.00" ensures two decimal places
