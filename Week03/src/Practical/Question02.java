@@ -24,7 +24,7 @@ public class Question02 {
 			Input = JOptionPane.showInputDialog("Enter Grade " + (Count + 1) + " :");
 			Grade = Integer.parseInt(Input);
 			
-			if(Grade < 0 || Grade > 100) {
+			while(Grade < 0 || Grade > 100) {
 				Input = JOptionPane.showInputDialog("Enter a Valid Grade from 0 to 100 " + (Count + 1) + " :");
 				Grade = Integer.parseInt(Input);
 			}
