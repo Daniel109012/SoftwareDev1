@@ -17,7 +17,7 @@ public class Question04 {
 		 * 
 		 * Fist bracket is Column Second Bracket is Row
 		 */
-		
+			//enhanced for-loops
 		
 		String output = "";
 		char[][] calc = {	{'1','2','3'},
@@ -34,7 +34,7 @@ public class Question04 {
 
 		}
 		
-
+			//nested loops
 
 	/*	for (int i = 0; i < calc.length; i++) {
 			for (int j = 0; j < calc[i].length; j++) {
