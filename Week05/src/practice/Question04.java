@@ -25,7 +25,7 @@ public class Question04 {
 		int studentMark;
 		int maxMarkValue = 100;
 		int minMarkValue = 0;
-		char grade = 0;
+		char grade;
 		
 		gradeAsString = JOptionPane.showInputDialog("Enter a Student Mark to get a Grade");
 		studentMark = Integer.parseInt(gradeAsString);
@@ -37,14 +37,14 @@ public class Question04 {
 
 		grade = calculateGrade(studentMark);
 		
-		output = "The student Scored a Grade of " + studentMark;
+		output = "The student Scored a Grade of " + grade;
 		JOptionPane.showMessageDialog(null, output);
 
 		
 
 	}//end main
 	
-	public static char calculateGrade(char grade) {
+	public static char calculateGrade(int mark) {
 		
 
 
@@ -62,11 +62,11 @@ public class Question04 {
 		char grade4 = 'F';
 		
 		
-		if(grade >= minAMark || grade <= maxMarkValue) {
-			return  'A';
-		}else if (grade >= minBMark && grade <= maxBMark) {
+		if(mark >= minAMark && mark <= maxMarkValue) {
+			return grade1;
+		}else if (mark >= minBMark && mark <= maxBMark) {
 			return grade2;
-		}else if (grade >= minCMark && grade <= maxCMark) {
+		}else if (mark >= minCMark && mark <= maxCMark) {
 			return grade3;
 		}else {
 			return grade4;
