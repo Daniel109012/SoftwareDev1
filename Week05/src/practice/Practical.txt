@@ -1,0 +1,110 @@
+Tutorial Questions
+
+1.	Using a class, write a method called welcome() that takes no arguments but prints a welcome message on the screen. Write a program to demonstrate your method being called from main().
+
+2.	Using a class, write a method called printInteger() that takes an integer as an argument and prints the integer. Write a program to demonstrate your method being called from main().
+
+3.	Using a class, write a method called addFiveToInteger() that takes an integer as an argument and returns the integer increased by five. Write a program to demonstrate your method being called from main().
+
+4.	Using a class, write a method called calculateGrade() that takes a student’s mark (an integer) and returns their grade (a char). Validate the mark entered to ensure that it is in the range 0 to 100. Use a variable inside the method to hold the answer before returning it. Write a program to demonstrate your method being called from main().
+
+
+mark	grade
+	
+75 - 100	A
+60 – 74	B
+50 - 59	C
+0 - 50	F
+
+5.	Write a program that simulates tossing a coin. The program should display a message to say whether the coin landed on heads or tails.
+
+6.	Modify your solution to the above question so that it tosses the coin 1000 times. Count the number of times each side of the coin appears and print the results. You shouldn’t print the result of each individual toss of the coin, you only need to print the total number of heads and the total number of tails.
+
+7.	Using a single class, write a method addTogether() which takes three integers adds them together and returns the result.  In the same class write a method called addTogether() which takes three doubles ands them together and returns the result.  In the same class write a method called addTogether() which takes three Strings, joins them together and returns a string.  The method signatures for each of the methods are shown below.
+
+Demonstrate each of the methods being used.
+
+int addTogether(int, int, int);
+double addTogether(double, double, double);
+String addTogether(String, String, String);
+
+8.	Using a class write a method to print the name, address and age of a person, the method signature is shown.
+
+void printDetails(String, String, int);
+
+Using the same class write a method to print the name and address oif a person, the method signature is shown.
+
+void printDetails(String, String);
+
+Add a method to print the name and age.
+
+void printDetails(String,  int);
+
+Can you now add a method to print the address and age?  If you can, go ahead, if not why not?
+Demonstrate each of your methods working.
+ 
+
+
+9.	Take the program given below and rewrite it using methods, you should use at least four methods.
+
+import javax.swing.JOptionPane;
+public class Question5 {
+	public static void main(String[] args) {
+		//declare variables
+		String theMark;
+		int mark;
+		String output;
+		int passes, fails;
+		int student;
+		String message;
+		String welcomeMessage = "Hello how are you?";
+		
+		JOptionPane.showMessageDialog(null, welcomeMessage, "Hello", JOptionPane.INFORMATION_MESSAGE);
+		
+		//initialise
+		student = 1;
+		passes = 0;
+		fails = 0;
+		int numberOfStudents = 3;
+		int passMark = 10;
+		int minMark = 0;
+		int maxMark = 100;
+	
+		
+		//main loop to read in marks      
+		
+		do {
+			//read in marks
+			message = "please enter a mark";
+			theMark = JOptionPane.showInputDialog(message);
+	   	   	mark = Integer.parseInt(theMark);
+
+	   	   	//validate mark
+	   	   	while (mark < minMark || mark  > maxMark) {
+		   	 	message = "Please enter a mark between " +minMark +" and " +maxMark;
+				theMark = JOptionPane.showInputDialog(message);
+		   	   	mark = Integer.parseInt(theMark);
+		   	}
+	   	   	  
+		   	  //check if mark is a pass or fail
+		   	  if (mark >= passMark) {
+		   		  passes++;
+		   	  }
+		   	  else {
+		   		  fails++;
+		   	  }
+		   	  //increment counter
+		   	student++;
+		}while(student <= numberOfStudents); 
+  
+		// construct output
+		output = "The number of passes is " +passes +"\n";
+		output = output  + "The number of fails is " +fails;
+		JOptionPane.showMessageDialog(null, output, "Hello", JOptionPane.INFORMATION_MESSAGE);
+		
+	}//end main
+
+}//end class
+
+ 
+
