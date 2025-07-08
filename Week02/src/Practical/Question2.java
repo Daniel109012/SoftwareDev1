@@ -14,7 +14,7 @@ public class Question2 {
 		int Num;
 		
 		
-		Input = JOptionPane.showInputDialog("Eenter a Number");
+		Input = JOptionPane.showInputDialog("Enter a Number");
 		Num = Integer.parseInt(Input);
 		
 		//Using Modulus to verify the remainder
