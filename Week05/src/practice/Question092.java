@@ -2,7 +2,7 @@ package practice;
 
 import javax.swing.JOptionPane;
 
-public class Question09 {
+public class Question092 {
 
 	public static void main(String[] args) {
 		/*
@@ -14,13 +14,24 @@ public class Question09 {
 		String output;
 		int passes = 0;
 		int fails = 0;
-		passes = 0;
-		fails = 0;
-
+		int passMark = 10;
+		int minMark = 0;
+		int maxMark = 100;
+		int numberOfStudents = 3;
+		
 		
 		welcome();
 		
-		output = studentResult(passes, fails);
+		for(int student = 0; student < numberOfStudents; student++) {
+			int mark = validateMark(minMark, maxMark);
+			if(ifPass(mark, passMark)) {
+				passes++;
+			}else {
+				fails++;
+			}
+		}
+		
+		output = markResult(passes, fails);
 		
 	}//end main
 	 
@@ -38,48 +49,32 @@ public class Question09 {
 		
 		input = JOptionPane.showInputDialog("Enter grade for student.");
 		mark = Integer.parseInt(input);
+		
 		while (mark < min || mark > max) {
 			input = JOptionPane.showInputDialog("Enter a mark between " + min + " and " + max);
 			mark = Integer.parseInt(input);
+			
 		}
 		
 		return mark;
+		
 	}//end validateMark
 	
 	public static boolean ifPass(int mark, int passMark) {
+		
 		return mark >= passMark;
+		
 	}//end ifPass
 	
-	public static String studentResult(int passes, int fails){
-		int passMark = 10;
-		int minMark = 0;
-		int maxMark = 100;
-		passes = 0;
-		 fails = 0;
-		String output;
-		int numberOfStudents = 3;
-		
-		
-		
-		for(int student = 0; student < numberOfStudents; student++) {
-			int mark = validateMark(minMark, maxMark);
-			if(ifPass(mark, passMark)) {
-				passes++;
-			}else {
-				fails++;
-			}
-		}
-		
-		output = markResult(passes, fails);
-		
-			return output;
-	}//end studentResult
 	
 	public static String markResult(int passes, int fails) {
 		String output;
+		
 		output = "The number of passes is " +passes +"\n";
 		output = output  + "The number of fails is " +fails;
+		
 		JOptionPane.showMessageDialog(null, output, "Hello", JOptionPane.INFORMATION_MESSAGE);
+		
 		return output;
 	}//end result
 	
