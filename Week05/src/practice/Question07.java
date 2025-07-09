@@ -29,13 +29,13 @@ public class Question07 {
 		String AsString3;
 		
 		
-		AsString1 = JOptionPane.showInputDialog("Enter and Integer");
+		AsString1 = JOptionPane.showInputDialog("Enter a integer");
 		num01 = Integer.parseInt(AsString1);
 		
-		AsString2 = JOptionPane.showInputDialog("Enter and Integer");
+		AsString2 = JOptionPane.showInputDialog("Enter another integer");
 		num02 = Integer.parseInt(AsString2);
 		
-		AsString3 = JOptionPane.showInputDialog("Enter and Integer");
+		AsString3 = JOptionPane.showInputDialog("Enter one more integer");
 		num03 = Integer.parseInt(AsString3);
 	
 		addTogether(num01, num02, num03);
@@ -43,13 +43,13 @@ public class Question07 {
 		
 		double num1, num2, num3;
 	
-		AsString1 = JOptionPane.showInputDialog("Enter and double");
+		AsString1 = JOptionPane.showInputDialog("Enter a double");
 		num1 = Double.parseDouble(AsString1);
 		
-		AsString2 = JOptionPane.showInputDialog("Enter and double");
+		AsString2 = JOptionPane.showInputDialog("Enter another double");
 		num2 = Double.parseDouble(AsString2);
 		
-		AsString3 = JOptionPane.showInputDialog("Enter and double");
+		AsString3 = JOptionPane.showInputDialog("Enter one more double");
 		num3 = Double.parseDouble(AsString3);
 			
 		addTogether(num1, num2, num3);
@@ -57,13 +57,14 @@ public class Question07 {
 		
 		
 		
-		AsString1 = JOptionPane.showInputDialog("Enter and your First Name");
+		AsString1 = JOptionPane.showInputDialog("Enter your First Name");
 
-		AsString2 = JOptionPane.showInputDialog("Enter and Middle Name");
+		AsString2 = JOptionPane.showInputDialog("Enter your Middle Name");
 
-		AsString3 = JOptionPane.showInputDialog("Enter and Last Name");
+		AsString3 = JOptionPane.showInputDialog("Enter your Last Name");
 
-		addTogether(AsString1, AsString2, AsString3);
+		String fullName = addTogether(AsString1, AsString2, AsString3);
+
 		
 
 
@@ -95,13 +96,14 @@ public class Question07 {
 		
 	}// end double addTogether(double, double, double);
 	
-	public static void addTogether(String word1, String word2, String word3) {
+	public static String addTogether(String word1, String word2, String word3) {
 		
 		String output;
 		//String sentence;
 		//sentence = word1  + word2  + word3;
 		output = word1  + " " +  word2  + " " + word3;
 		JOptionPane.showMessageDialog(null, output, " Question07", JOptionPane.INFORMATION_MESSAGE);
+		return output;
 		
 	}
 	
