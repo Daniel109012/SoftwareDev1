@@ -8,7 +8,7 @@ public class Question09 {
 		 * 9.	Take the program given below and rewrite it using methods, you should use at least four methods.
 
 import javax.swing.JOptionPane;
-public class Question5 {
+public class Question05 {
 	public static void main(String[] args) {
 		//declare variables
 		String theMark;
