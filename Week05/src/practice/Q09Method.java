@@ -7,51 +7,49 @@ public class Q09Method {
 	//Welcome Message
 	public static String welcomeMessage(String welcomeMessage) {
 		//input Message
-		welcomeMessage = "Hello how are you?";
+		welcomeMessage = "Hello how are you? \n Welcome to student Mark"
+				+ ""
+				+ "";
 		//output Message
 		JOptionPane.showMessageDialog(null, welcomeMessage, "Hello", JOptionPane.INFORMATION_MESSAGE);
 		
 		return welcomeMessage ;
 	}
 	
-	public static int validatePass(int passes, int fails) {
+	public static int studentMark(int mark) {
 		
-		int studentNum = 3;
-		for(int student = 0; student < studentNum; student++) {
+
 			String markAsString = JOptionPane.showInputDialog("Enter the student mark");
-			int mark = Integer.parseInt(markAsString);
-			
-			while(mark < 0 || mark > 100) {
-				markAsString = JOptionPane.showInputDialog("Enter the student mark fro 0 to 100");
-				mark = Integer.parseInt(markAsString);
-			}
-			
-			if(mark >= 10) {
-				passes++;
-			}else{
-				fails++;
-			}
-		
-		}
-		
-		return studentNum ;
+			mark = Integer.parseInt(markAsString);
+
+		return mark ;
 	}
 	
-	public static String markResult() {
+	public static int validateMark(int mark) {
+		int minMark = 0;
+		int maxMark = 100;
 		
+		String markAsString = "Please enter a mark between " +minMark +" and " +maxMark;
+					String	message = JOptionPane.showInputDialog(markAsString);
+			   	   	 mark = Integer.parseInt(message);
+			   	   	 
+			   	   	 return mark;
 		
-		int passes = 0;
-		int fails = 0;
+	}
+	
+	public static String result(int passes, int fails ) {
 		String output;
-		
-		Q09Method.validatePass(passes, fails);
+
 		
 		output = "The number of passes is " +passes +"\n";
 		output = output  + "The number of fails is " +fails;
+		
 		JOptionPane.showMessageDialog(null, output, "Hello", JOptionPane.INFORMATION_MESSAGE);
 		return output;
-
+		
 	}
+	
+	
 	
 	
 
