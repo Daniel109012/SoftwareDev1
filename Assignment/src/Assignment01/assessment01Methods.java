@@ -1,6 +1,8 @@
 package Assignment01;
 
 import javax.swing.*;
+
+import java.awt.Dimension;
 import java.util.Random;
 
 public class assessment01Methods {
@@ -24,7 +26,7 @@ public class assessment01Methods {
 		M = Integer.parseInt(columnAsString);  // convert string to Integer for number of columns
 		}while(M < 3 || M > 10); // only accepts values between 3 and 10
 		
-		int[][] grid = gridNumbers(N , M); // calls random numbers from the above input
+		int[][] grid = gridNumbers(N, M); // calls random numbers from the above input
 
 		assessment01Methods.table(grid); // calls the table to input the data
 
@@ -75,27 +77,88 @@ public class assessment01Methods {
 		int N = grid.length;
 		int M = grid[0].length;
 		
-		Object[][] matrix = new Object[N][M];
-		for(int r = 0; r < N; r++) {
-			for(int c = 0; c < M; c++) {
-				matrix[r][c] = grid[r][c];
-				
-			}//exit for
-		}//end for
+
+	 // Column headers (add one for row label and one for row average)
+		String[] colName = new String[M + 2];
+		colName[0] = "Row";
+			for (int c = 1; c <= M; c++) {
+				colName[c] = "C" + c;
+			}
+			colName[M + 1] = "Row Avg";
+			
+
+		// Table data (add one row for column averages)
+		Object[][] matrix = new Object[N + 1][M + 2];
+
+			// Fill in data and compute row averages
+		for (int r = 0; r < N; r++) {
+			matrix[r][0] = "R" + (r + 1); // Row label
+			int rowSum = 0;
+			for (int c = 0; c < M; c++) {
+				matrix[r][c + 1] = grid[r][c];
+				rowSum += grid[r][c];
+			}
+		matrix[r][M + 1] = String.format("%.2f", (double) rowSum / M); // Row average
+		}
+	
+
+		// Compute column averages
+		matrix[N][0] = "Col Avg";
+		for (int c = 0; c < M; c++) {
+			int colSum = 0;
+			for (int r = 0; r < N; r++) {
+				colSum += grid[r][c];
+			}
+			matrix[N][c + 1] = String.format("%.2f", (double) colSum / N);
+		}
+
+
+		// Compute average of row averages
+		double total = 0;
+		for (int r = 0; r < N; r++) {
+			total += Double.parseDouble(matrix[r][M + 1].toString());
+		}
+		matrix[N][M + 1] = String.format("%.2f", total / N);
+
 		
-		String[] MName = new String[M];
-		for(int c = 0; c < M; c++) {
-			MName[c] = "C" + (c + 1);
-		}//exit column nameing for
 		
-		JTable table = new JTable(matrix, MName);
+
+		JTable table = new JTable(matrix, colName);
+		// Allow column resizing
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // Prevents automatic resizing so user can manually resize
+		table.getTableHeader().setResizingAllowed(true);
+		
+
+		// Optional: Set preferred column widths (you can adjust these)
+		for (int i = 0; i < table.getColumnCount(); i++) {
+			table.getColumnModel().getColumn(i).setPreferredWidth(60);
+		}
+
+		// Wrap in scroll pane
 		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setPreferredSize(new Dimension(800, 300)); // Set dialog size here
+
+JDialog dialog = new JDialog();
+dialog.setTitle("Assignment One");
+dialog.setModal(true);
+dialog.setResizable(true); // ✅ Makes the dialog resizable
+dialog.getContentPane().add(scrollPane);
+dialog.pack();
+dialog.setLocationRelativeTo(null);
+dialog.setVisible(true);
+
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+		// Show dialog
 		JOptionPane.showMessageDialog(null, scrollPane, "Assignment One", JOptionPane.INFORMATION_MESSAGE);
-		
+
 	}//exit table method	
 	
 	
 	//-------------------------------------------------------------------------------------
+	
+
 
 }//end class
 
