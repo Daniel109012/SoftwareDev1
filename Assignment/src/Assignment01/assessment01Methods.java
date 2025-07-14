@@ -2,7 +2,9 @@ package Assignment01;
 
 import javax.swing.*;
 
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Frame;
 import java.util.Random;
 
 public class assessment01Methods {
@@ -12,19 +14,56 @@ public class assessment01Methods {
 		
 		String rowAsString; //input number of rows in a string
 		String columnAsString; // input number of columns in a string
-		int N ; //rows
-		int M ; //columns
+		int N = 0; //rows
+		int M = 0 ; //columns
+		String digitPattern = "\\d+";
+		boolean validInput;
 		
 		
 		do{
+			
+			validInput = true;
+			
 			rowAsString = JOptionPane.showInputDialog("Enter the number of Rows between 3 and 10");
-		N = Integer.parseInt(rowAsString); // convert string to Integer for number of rows
-		}while(N < 3 || N > 10); // only accepts values between 3 and 10
+			if (rowAsString == null || rowAsString.trim().isEmpty() || !rowAsString.trim().matches(digitPattern)) {
+				JOptionPane.showMessageDialog(null, "Enter the number of Rows between 3 and 10");
+				validInput = false;
+				continue;
+			}
+			
+			
+			N = Integer.parseInt(rowAsString); // convert string to Integer for number of rows
+		
+			if(N < 3 || N > 10 || rowAsString == null || rowAsString.trim().isEmpty() || !rowAsString.trim().matches(digitPattern)) {
+				JOptionPane.showMessageDialog(null, "Enter the number of Rows between 3 and 10");
+				validInput = false;
+			}
+		
+		}while(!validInput); // only accepts values between 3 and 10
+		
+			//==========================================================================//
+		
 		
 		do{
+			
+			validInput = true;
+			
 		columnAsString = JOptionPane.showInputDialog("Enter the number or Columns  between 3 and 10");
+		if (columnAsString == null || columnAsString.trim().isEmpty() || !columnAsString.trim().matches(digitPattern)) {
+			JOptionPane.showMessageDialog(null, "Enter the number of Columns between 3 and 10");
+			validInput = false;
+			continue;
+		}
 		M = Integer.parseInt(columnAsString);  // convert string to Integer for number of columns
-		}while(M < 3 || M > 10); // only accepts values between 3 and 10
+		
+		if(M < 3 || M > 10) {
+			JOptionPane.showMessageDialog(null, "Enter the number of Columns between 3 and 10");
+			validInput = false;
+		}
+		
+		}while(!validInput); // only accepts values between 3 and 10
+		
+			//========================================================================//
 		
 		int[][] grid = gridNumbers(N, M); // calls random numbers from the above input
 
@@ -33,7 +72,7 @@ public class assessment01Methods {
 	} // end grid method
 	
 	
-	//--------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------//
 	
 	
 	public static int[][] gridNumbers(int N, int M){
@@ -42,10 +81,8 @@ public class assessment01Methods {
 		
 		int[][] grid = new int[N][M]; // 2D array for table
 		Random randomNum = new Random(); 
-		String output;
 
 		
-		output = (" Assignment One \n\n");
 		
 		for (int r = 0; r < N; r++) {
 			for (int c = 0; c < M; c++) {
@@ -55,14 +92,10 @@ public class assessment01Methods {
 				}else {
 					grid[r][c] = 1 + 2 * randomNum.nextInt(100) + 1;//generate random numbers from 1 - 1000
 				}
-			
-			}
-			
+			}	
 		}
-		
-		JOptionPane.showMessageDialog(null, output);
-		
-		return grid; //returns the randome numbrs 
+	
+		return grid; //returns the random numbers 
 		
 	}//exit gridNumbers method
 	
@@ -73,9 +106,8 @@ public class assessment01Methods {
 	public static void table(int[][] grid) {
 		
 		//to display the table
-		
-		int N = grid.length;
-		int M = grid[0].length;
+		int N = grid.length; //rows
+		int M = grid[0].length; //columns
 		
 
 	 // Column headers (add one for row label and one for row average)
@@ -89,6 +121,7 @@ public class assessment01Methods {
 
 		// Table data (add one row for column averages)
 		Object[][] matrix = new Object[N + 1][M + 2];
+		
 
 			// Fill in data and compute row averages
 		for (int r = 0; r < N; r++) {
@@ -102,7 +135,7 @@ public class assessment01Methods {
 		}
 	
 
-		// Compute column averages
+		// calculate column averages
 		matrix[N][0] = "Col Avg";
 		for (int c = 0; c < M; c++) {
 			int colSum = 0;
@@ -113,20 +146,22 @@ public class assessment01Methods {
 		}
 
 
-		// Compute average of row averages
+		// calculate average of whole matrix
 		double total = 0;
+		int count = 0;
 		for (int r = 0; r < N; r++) {
-			total += Double.parseDouble(matrix[r][M + 1].toString());
+			for(int c = 0; c < M; c++) {
+			total += grid[r][c];
+			count++;
+			}
 		}
-		matrix[N][M + 1] = String.format("%.2f", total / N);
+		matrix[N][M + 1] = String.format("%.2f", total / count);
 
 		
 		
 
+		// Create the JTable
 		JTable table = new JTable(matrix, colName);
-		// Allow column resizing
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // Prevents automatic resizing so user can manually resize
-		table.getTableHeader().setResizingAllowed(true);
 		
 
 		// Optional: Set preferred column widths (you can adjust these)
@@ -136,29 +171,101 @@ public class assessment01Methods {
 
 		// Wrap in scroll pane
 		JScrollPane scrollPane = new JScrollPane(table);
-		scrollPane.setPreferredSize(new Dimension(800, 300)); // Set dialog size here
+		scrollPane.setPreferredSize(new Dimension(800, 200)); // Set dialog initial size here
+		
+		
 
-JDialog dialog = new JDialog();
-dialog.setTitle("Assignment One");
-dialog.setModal(true);
-dialog.setResizable(true); // ✅ Makes the dialog resizable
-dialog.getContentPane().add(scrollPane);
-dialog.pack();
-dialog.setLocationRelativeTo(null);
-dialog.setVisible(true);
 
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+	// Get second-largest averages
+	String summary = secondLargestAvg(matrix, N, M);
+	JTextArea summaryArea = new JTextArea(summary);
+	summaryArea.setEditable(false);
+	summaryArea.setOpaque(false);
+	summaryArea.setLineWrap(true);
+	summaryArea.setWrapStyleWord(true);
+	summaryArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		// Show dialog
-		JOptionPane.showMessageDialog(null, scrollPane, "Assignment One", JOptionPane.INFORMATION_MESSAGE);
+	// Combine table and summary in one panel
+	JPanel panel = new JPanel();
+	panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+	panel.add(scrollPane);
+	panel.add(Box.createVerticalStrut(10));
+	panel.add(summaryArea);
+
+
+
+		
+		// Create a dialog
+		JDialog dialog = new JDialog((Frame) null, "Assignment One", true); // true = modal
+		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+
+		// Add scroll pane to dialog
+		dialog.getContentPane().add(panel);
+
+		// Automatically size the dialog to fit the table
+		dialog.pack();
+
+		// Center the dialog on screen
+		dialog.setLocationRelativeTo(null);
+
+		// Show the dialog
+		dialog.setVisible(true);
+
 
 	}//exit table method	
 	
 	
 	//-------------------------------------------------------------------------------------
 	
+	
+	public static String secondLargestAvg(Object[][] matrix, int N, int M) {
+		
+		//find the second largest row average
+		double maxRowAvg = -1, secondMaxRowAvg = -1;
+		int secondRowAvg = -1;
+		for(int r = 0; r < N; r++) {
+			double avg = Double.parseDouble(matrix[r][M + 1].toString());
+			if(avg > maxRowAvg) {
+				secondMaxRowAvg = maxRowAvg;
+				maxRowAvg = avg;
+			}else if (avg > secondMaxRowAvg && avg < maxRowAvg) {
+				secondMaxRowAvg = avg;
+				secondRowAvg = r;
+			}
+		}
+		
+		
+		//find the second largest Column average
+		double maxColAvg = -1, secondMaxColAvg = -1;
+		int secondColAvg = -1;
+		for(int c = 0; c < M; c++) {
+			double avg = Double.parseDouble(matrix[N][c + 1].toString());
+			if(avg > maxColAvg) {
+				secondMaxColAvg = maxColAvg;
+				maxColAvg = avg;
+			}else if (avg > secondMaxColAvg && avg < maxColAvg) {
+				secondMaxColAvg = avg;
+				secondColAvg = c;
+			}
+		}
+		
+		String summary = String.format(
+				"Second Largest Row Average:       R%d (%.2f)\nSecond Largest Column Average: C%d (%.2f)",
+					secondRowAvg + 1, secondMaxRowAvg,
+					secondColAvg + 1, secondMaxColAvg
+				);
+		
 
+	 JLabel summaryLabel = new JLabel(summary);
+	 summaryLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	 
+	 return summary;
+		
+
+		
+	}//exit Method
+	
+//-----------------------------------------------------------------------------------------------------
 
 }//end class
 
