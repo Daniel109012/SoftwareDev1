@@ -164,10 +164,10 @@ public class assessment01Methods {
 		JTable table = new JTable(matrix, colName);
 		
 
-		// Optional: Set preferred column widths (you can adjust these)
-		for (int i = 0; i < table.getColumnCount(); i++) {
-			table.getColumnModel().getColumn(i).setPreferredWidth(60);
-		}
+		// Optional: Set in column widths (you can adjust these)
+	//	for (int i = 0; i < table.getColumnCount(); i++) {
+	//		table.getColumnModel().getColumn(i).setPreferredWidth(60);
+	//	}
 
 		// Wrap in scroll pane
 		JScrollPane scrollPane = new JScrollPane(table);
@@ -222,42 +222,54 @@ public class assessment01Methods {
 		
 		//find the second largest row average
 		double maxRowAvg = -1, secondMaxRowAvg = -1;
-		int secondRowAvg = -1;
+		int MaxRowInd = -1, secondRowInd = -1;
+		
+		
 		for(int r = 0; r < N; r++) {
 			double avg = Double.parseDouble(matrix[r][M + 1].toString());
 			if(avg > maxRowAvg) {
 				secondMaxRowAvg = maxRowAvg;
+				secondRowInd = MaxRowInd;
 				maxRowAvg = avg;
+				MaxRowInd = r;
 			}else if (avg > secondMaxRowAvg && avg < maxRowAvg) {
 				secondMaxRowAvg = avg;
-				secondRowAvg = r;
+				secondRowInd = r;
 			}
 		}
 		
 		
 		//find the second largest Column average
 		double maxColAvg = -1, secondMaxColAvg = -1;
-		int secondColAvg = -1;
-		for(int c = 0; c < M; c++) {
-			double avg = Double.parseDouble(matrix[N][c + 1].toString());
+		int maxColInd = -1, secondColInd = -1;
+		
+		
+		for(int c = 1; c <= M; c++) {
+			double avg = Double.parseDouble(matrix[N][c].toString());
 			if(avg > maxColAvg) {
 				secondMaxColAvg = maxColAvg;
+				secondColInd = maxColInd;
 				maxColAvg = avg;
+				maxColInd = c;
 			}else if (avg > secondMaxColAvg && avg < maxColAvg) {
 				secondMaxColAvg = avg;
-				secondColAvg = c;
+				secondColInd = c;
 			}
 		}
 		
+	//	if(secondRowInd == -1 || secondColInd== -1) {
+	//		return "Not enough data to determin second largest averages";
+	//	}
+		
+		
+		//print out the column, rows and averages also the second larges averages
 		String summary = String.format(
-				"Second Largest Row Average:       R%d (%.2f)\nSecond Largest Column Average: C%d (%.2f)",
-					secondRowAvg + 1, secondMaxRowAvg,
-					secondColAvg + 1, secondMaxColAvg
+				"Second Largest Row Average:       	 R%d (%.2f)\nSecond Largest Column Average: 	C%d (%.2f)",
+
+					secondRowInd+ 1, secondMaxRowAvg,
+					secondColInd, secondMaxColAvg
 				);
 		
-
-	 JLabel summaryLabel = new JLabel(summary);
-	 summaryLabel.setHorizontalAlignment(SwingConstants.CENTER);
 	 
 	 return summary;
 		
