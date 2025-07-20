@@ -188,16 +188,18 @@ public class assessment01Methods {
 	                countZero++;
 	            }
 	            output.append(String.format(" | %8d", modifiedMatrix[r][c]));
-	        }
+	        }//exit 
 	        output.append(" |\n");
-	    }
+	    }//exit for
 	    
+	    
+	    //print out cont of Possitive, Negative, and Zero
 	    output.append("\nCount of +1: ").append(countPositive);
 	    output.append("\nCount of -1: ").append(countNegative);
 	    output.append("\nCount of  0: ").append(countZero);
 	    
 	    return output.toString() ;
-	}
+	}//exit method matrixMod
 	
 	
 	//===========================================================================================\\

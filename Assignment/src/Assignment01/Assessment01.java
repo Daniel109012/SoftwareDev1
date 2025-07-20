@@ -9,7 +9,7 @@ public class Assessment01 {
 	public static void main(String[] args) {
 		
 		
-		assessment01Methods.gridInput(); //calls void grid to display the table
+		assessment01Methods.gridInput(); //calls void grid to display the table from assessment01Methods.java
 		
 		
 	}//end main
