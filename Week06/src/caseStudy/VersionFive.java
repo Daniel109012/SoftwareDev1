@@ -46,24 +46,7 @@ public class VersionFive {
 
 
 			}//exit main
-			
-	/*		  public static void printPack(String [][] thePack, int numberSuits, int cardsPerSuit) {
-				  
-				  String output = "";//Sting 
 
-				    for (int suitloop = 0; suitloop < numberSuits; suitloop++) {
-				        for (int cardloop = 0; cardloop < cardsPerSuit; cardloop++) {
-				            output = output + thePack[suitloop] [cardloop] + "  ";
-				        }//exit inter for loop selects columns
-				        output = output + "\n";
-				    }//exit outer for loop selects rows
-				    
-				    // display cards
-				    JOptionPane.showMessageDialog(null, output, "All Cards", JOptionPane.INFORMATION_MESSAGE);
-
-				  }//exit printPack Method
-				  
-				  */
 			  
 			  public static String pickACard(String [][] thePack, int numberSuits, int cardsPerSuit) {
 				  
