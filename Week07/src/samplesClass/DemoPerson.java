@@ -4,12 +4,13 @@ public class DemoPerson {
 
 	public static void main(String[] args) {
 		
-		//use with method Person
+		
+		
 		Person p1 = new Person("Daniel", "Benque", 32);
 		Person p2 = new Person("Dani", 30);
 		Person p3 = new Person();
 		
-//		//use with constructor Person 		
+		
 		p3.setName("Daniel");
 		p3.setAddress("Benque");
 		p3.setAge(34);

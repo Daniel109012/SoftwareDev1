@@ -34,15 +34,15 @@ public class Person {
 	public String toString() {
 		String output;
 		
-		output ="My name is " +this.name  + " and I am " + this.age + " years old" + " I live at " + this.address;
+		output ="My name is " +this.name  + " and I am " + this.age + " years old" + " I live at " + this.address; //calls from get___()
 		
-		return output;
+		return output; //return toString()
 	}
 	
 	public void printDetails() {
 		String output;
 		
-		output = toString();
+		output = toString(); //call toSting()
 		
 		//display message
 		JOptionPane.showMessageDialog(null, output);
