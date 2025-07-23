@@ -1,3 +1,6 @@
+// Bernard Daniel Young
+// 40691875
+
 package Assignment01;
 
 //import java.util.Random;
