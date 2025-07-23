@@ -2,7 +2,7 @@ package caseStudy;
 
 import javax.swing.JOptionPane;
 
-public class VersionFive {
+public class Version05 {
 
 	public static void main(String[] args) {
 		// Case study Version One

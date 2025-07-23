@@ -2,7 +2,7 @@ package caseStudy;
 
 import javax.swing.JOptionPane;
 
-public class VersionSix {
+public class Version07 {
 
 	public static void main(String[] args) {
 		// Case study Version One
@@ -14,6 +14,7 @@ public class VersionSix {
 	    final int TARGET = 21;
 	    
 	    String card;
+	    int gameStatus; // 1 computer wins, 0 play on, -1 player wins
 	    int usersResponse;
 	    int valueOfHand = 0;
 		String[][] packOfCards = {
@@ -33,17 +34,27 @@ public class VersionSix {
 
 			    
 			    // deal cards, print game status
-			    deal(packOfCards, NUMBER_OF_SUITS, CARDS_PER_SUIT, playersHand, computersHand);
-			    usersResponse = offerUserAnotherGo(playersHand, computersHand);
+	    	deal(packOfCards, NUMBER_OF_SUITS, CARDS_PER_SUIT, playersHand, computersHand);
+	    	usersResponse = offerUserAnotherGo(playersHand, computersHand);
+
+			    
 			    while (usersResponse == 0 && valueOfHand < TARGET) {
 			      card = pickACard(packOfCards, NUMBER_OF_SUITS, CARDS_PER_SUIT);
 			      addToHand(playersHand, card);
 			      valueOfHand = getValue(playersHand);
 			      if (valueOfHand < TARGET) {
-			        usersResponse = offerUserAnotherGo(playersHand, computersHand);
+			          usersResponse = offerUserAnotherGo(playersHand, computersHand);
 			      }
 			    }
-			    printGameStatus(playersHand, computersHand, TARGET);
+
+			    gameStatus = gameStatus(playersHand, computersHand, TARGET);
+			    while (gameStatus == 0) {
+			      // computer picks another card
+			      card = pickACard(packOfCards, NUMBER_OF_SUITS, CARDS_PER_SUIT);
+			      addToHand(computersHand, card);
+			      gameStatus = gameStatus(playersHand, computersHand, TARGET);
+			    }
+
 
 
 
@@ -224,7 +235,84 @@ public class VersionSix {
 				      }
 				    }
 	  } // addToHand()
+	  
+	  
+	  //=================================================================================================\\
+	  
+	  public static int gameStatus(String [] playersCards, String [] computersCards, int theTarget) {
+		  
+		 // int gameStatus; // 1 computer wins, 0 play on, -1 player wins
+		    int computerSticksAt = 17;
+		    int status = 0; // 1 computer wins, 0 play on, -1 player wins
+		    String output = "Computer ";
+		    int playerValue, computerValue;
+		    
+		    // get computers details for dispaying
+		    for (int cardsInHand = 0; cardsInHand < computersCards.length; cardsInHand++) {
+		      if (computersCards[cardsInHand] != null) {
+		        // there is a card so display it
+		        output = output + computersCards[cardsInHand] + " ";
+		      }
+		    }
+		    // get value of computers hand
+		    computerValue = getValue(computersCards);
+		    output = output + "Value: " + computerValue;
 
-			  
+
+		    // get players details for displaying
+		    output = output + "\nPlayer ";
+		    for (int cardsInHand = 0; cardsInHand < playersCards.length; cardsInHand++) {
+		      if (playersCards[cardsInHand] != null) {
+		        // there is a card so display it
+		        output = output + playersCards[cardsInHand] + " ";
+		      }
+		    }
+		    // get value of players hand
+		    playerValue = getValue(playersCards);
+		    output = output + "Value: " + playerValue;
+
+		    // check to see if game is over or not
+		    if (playerValue > theTarget) {
+		      // player has more than 21
+		      output = output + "\n\n COMPUTER  WINS";
+		      status = 1;
+		    }else {
+		        // player has 21 or less
+		        if (computerValue > theTarget) {
+		          // computer has more than 21
+		          output = output + "\n\n YOU WIN";
+		          status = -1;
+		        }
+		      else {
+		          // neither computer or player has more than 21
+		          // check to see if computer wants another card
+		          if (computerValue < computerSticksAt) {
+		            // play on - another card for the computer
+		            status = 0;
+		          }
+		          else {
+		            // compare values to see who has won
+		            if (computerValue >= playerValue) {
+		              // computer wins
+		              output = output + "\n\n COMPUTER  WINS";
+		              status = 1;
+		            }
+		            else {
+		              // player wins
+		              output = output + "\n\n YOU WIN";
+		              status = -1;
+		            } // end if/else
+		          } // end if/else
+		        } // end if/else
+		    } // end if/else
+		      // display cards
+		      JOptionPane.showMessageDialog(null, output, "Current Game Status", 
+		  						JOptionPane.INFORMATION_MESSAGE);
+
+		      return status;
+
+	        
+	  }
+	  
 
 }//exit Class

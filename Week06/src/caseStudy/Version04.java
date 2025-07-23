@@ -2,7 +2,7 @@ package caseStudy;
 
 import javax.swing.JOptionPane;
 
-public class VersionThree {
+public class Version04 {
 
 	public static void main(String[] args) {
 		// Case study Version One
@@ -101,12 +101,18 @@ public class VersionThree {
 
 			  public static void printGameStatus(String [] playersCards, String [] computersCards) {
 				    String output = "Computer ";
+				    int value;
+				    
 				    for (int cardsInHand = 0; cardsInHand < computersCards.length; cardsInHand++) {
 				      if (computersCards[cardsInHand] != null) {
 				        // there is a card so display it
 				        output = output + computersCards[cardsInHand] + " ";
 				      }
 				    }
+				    
+				    value = getValue(computersCards);
+				    output = output + "Value: " + value;
+
 				    
 				    output = output + "\nPlayer ";
 				    for (int cardsInHand = 0; cardsInHand < playersCards.length; cardsInHand++) {
@@ -115,13 +121,70 @@ public class VersionThree {
 				        output = output + playersCards[cardsInHand] + " ";
 				      }
 				    }
-
+				    
+				    value = getValue(playersCards);
+				    output = output + "Value: " + value;
 
 				    // display cards
 				    JOptionPane.showMessageDialog(null, output, "Current Game Status", 
 				JOptionPane.INFORMATION_MESSAGE);
+				    
 				  } // end printGameStatus()
 
 
+			  public static int getValue(String [] cards) {
+				    int value = 0;
+				    char firstLetter;
+				    for (int cardsInHand = 0; cardsInHand < cards.length; cardsInHand++) {
+				      if (cards[cardsInHand] != null) {
+				        // there is a card so get its value
+				        // more code to go here
+				    	  
+				          // there is a card so get its value
+				          firstLetter = cards[cardsInHand].charAt(0);
+				          switch (firstLetter) {
+				            case 'A':
+				              value = value + 11;
+				              break;
+				            case '2':
+				              value = value + 2;
+				              break;
+				            case '3':
+				              value = value + 3;
+				              break;
+				            case '4':
+				              value = value + 4;
+				              break;
+				            case '5':
+				              value = value + 5;
+				              break;
+				            case '6':
+				              value = value + 6;
+				              break;
+				            case '7':
+				              value = value + 7;
+				              break;
+				            case '8':
+				              value = value + 8;
+				              break;
+				            case '9':
+				              value = value + 9;
+				              break;
+				            case '1': // ie 10
+				            case 'J':
+				            case 'Q':
+				            case 'K':
+				              value = value + 10;
+				              break;
+				          } // end switch
+
+
+				      } // end if
+				    } // end for
+				    return value;
+
+				  
+			  }//exit getValue(String [] cards)
+			  
 
 		}//exit Class
