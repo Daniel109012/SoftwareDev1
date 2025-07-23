@@ -4,16 +4,21 @@ public class DemoPerson {
 
 	public static void main(String[] args) {
 		
-		Person p1 = new Person();
+		//use with method Person
+		Person p1 = new Person("Daniel", "Benque", 32);
+		Person p2 = new Person("Dani", 30);
+		Person p3 = new Person();
 		
-		p1.setName("Daniel");
-		p1.setAddress("Benque");
-		p1.setAge(34);
+//		//use with constructor Person 		
+		p3.setName("Daniel");
+		p3.setAddress("Benque");
+		p3.setAge(34);
 		
 		p1.printDetails();
-		
-		p1.setAge(32);
-		p1.printDetails();
+		p2.printDetails();
+		p3.printDetails();
+
+
 
 	}
 

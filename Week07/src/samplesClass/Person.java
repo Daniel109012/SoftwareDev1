@@ -9,20 +9,32 @@ public class Person {
 	private int age;
 	
 	public Person() {
+//        constructor without parameters
+//		String output;
+//		
+//		output = "The Constructor was called";
+//		
+//		//display message
+//		JOptionPane.showMessageDialog(null, output);
 		
-		String output;
-		
-		output = "The Constructer was called";
-		
-		//display message
-		JOptionPane.showMessageDialog(null, output);
-		
+	}
+	
+	
+	public Person(String name, String address, int age) {
+//      constructor with parameters 
+		this.name = name;
+		this.address = address;
+		this.age = age;
+	}
+	
+	public Person(String name, int age) {
+		this(name, "Unknown", age);
 	}
 	
 	public String toString() {
 		String output;
 		
-		output ="My name is " +this.name + " I live at " + this.address + " and I am " + this.age + " years old";
+		output ="My name is " +this.name  + " and I am " + this.age + " years old" + " I live at " + this.address;
 		
 		return output;
 	}
