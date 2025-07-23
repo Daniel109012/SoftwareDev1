@@ -8,13 +8,21 @@ public class Person {
 	private String address;
 	private int age;
 	
-	public Person() {}
+	public Person() {
+		
+		String output;
+		
+		output = "The Constructer was called";
+		
+		//display message
+		JOptionPane.showMessageDialog(null, output);
+		
+	}
 	
 	public String toString() {
 		String output;
 		
-		output ="My name is " +this.name + " I live at " + this.address + "\n";
-		output = output + "and I am " + this.age + " years old";
+		output ="My name is " +this.name + " I live at " + this.address + "and I am " + this.age + " years old";
 		
 		return output;
 	}
@@ -27,5 +35,7 @@ public class Person {
 		//display message
 		JOptionPane.showMessageDialog(null, output);
 	}
+	
+	
 
 }
