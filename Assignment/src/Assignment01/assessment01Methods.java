@@ -12,6 +12,9 @@ public class assessment01Methods {
 
 	public static void gridInput() {
 		
+		//user Input for amount of rows an columns that are needed for the table
+		//it does not allow the input of blank space, characters or strings
+		
 		
 		String rowAsString; //input number of rows in a string
 		String columnAsString; // input number of columns in a string
@@ -79,6 +82,12 @@ public class assessment01Methods {
 
 	public static String randomNumbers(int N, int M) {
 		
+		//generates random numbers for the table, arranges them in odd numbers for odd rows 
+		//and even numbers for even rows
+		//averages the rows and columns and provides a total average for the table
+		//returns the output to the gridInput method.
+		
+		
 		int[][] matrix = new int[N][M]; // 2D array for table
 		Random randomNum = new Random();
 		StringBuilder output = new StringBuilder();
@@ -119,23 +128,26 @@ public class assessment01Methods {
 	    output.append(String.format(" | %8.2f |", overallAvg)); // bottom-right corner
 	    
 	    // Find second largest row average
-	    double secondLargestRowAvg = SecondLargest(rowAverages);
-	    double secondLargestColAvg = SecondLargest(columnAverages);
+	    double secondLargestRowAvg = SecondLargest(rowAverages); //calls method 
+	    double secondLargestColAvg = SecondLargest(columnAverages); //calls method 
 	    
 	    output.append("\n\nSecond Largest Row Average: " + String.format("%.2f", secondLargestRowAvg));
 	    output.append("\nSecond Largest Column Average: " + String.format("%.2f", secondLargestColAvg));
 	    
-	    output.append(matrixMod(matrix, rowAverages, columnAverages));
+	    output.append(matrixMod(matrix, rowAverages, columnAverages)); //calls method 
 	    
 	    
 	    	JTextArea textArea = new JTextArea(output.toString());
 	    	textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
 	    	JOptionPane.showMessageDialog(null, new JScrollPane(textArea), "Matrix Output", JOptionPane.PLAIN_MESSAGE);
-	    	return output.toString(); // You must return a String here
+	    	return output.toString(); //returns a String here
 	}// exit randomNumbers method
 	
 //===========================================================================================\\
 	//==================================================================================\\
+	
+	//takes the second Largest of averages for rows and columns 
+	//returns the result to the randomNumbers() to be displayed
 	
 	private static double SecondLargest(double[] array) {
 	    double largest = Double.NEGATIVE_INFINITY;
@@ -159,6 +171,12 @@ public class assessment01Methods {
 	
 	
 	public static String matrixMod(int[][] matrix, double[] rowAverages, double[] columnAverages) {
+		
+		//creates the table with 1, -1 and 0 based on the tabled output above
+		//and indicates how many  1, -1 and 0 are in the table
+		//the method is returned to the randomNumbers() method
+		
+		
 		int N = matrix.length;
 	    int M = matrix[0].length;
 		int[][] modifiedMatrix = new int[N][M];
@@ -196,7 +214,7 @@ public class assessment01Methods {
 	    }//exit for
 	    
 	    
-	    //print out cont of Possitive, Negative, and Zero
+	    //print out count of Positive, Negative, and Zero
 	    output.append("\nCount of +1: ").append(countPositive);
 	    output.append("\nCount of -1: ").append(countNegative);
 	    output.append("\nCount of  0: ").append(countZero);

@@ -11,6 +11,9 @@ public class DemoPerson {
 		p1.setAge(34);
 		
 		p1.printDetails();
+		
+		p1.setAge(32);
+		p1.printDetails();
 
 	}
 

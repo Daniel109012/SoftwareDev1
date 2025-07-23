@@ -22,7 +22,7 @@ public class Person {
 	public String toString() {
 		String output;
 		
-		output ="My name is " +this.name + " I live at " + this.address + "and I am " + this.age + " years old";
+		output ="My name is " +this.name + " I live at " + this.address + " and I am " + this.age + " years old";
 		
 		return output;
 	}
@@ -36,6 +36,28 @@ public class Person {
 		JOptionPane.showMessageDialog(null, output);
 	}
 	
+	public int getAge() {
+		return this.age;
+	}
 	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName (String name) {
+		this.name = name;
+	}
+	
+	public String getAddress() {
+		return this.address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 }
