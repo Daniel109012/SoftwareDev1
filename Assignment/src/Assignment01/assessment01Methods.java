@@ -4,7 +4,6 @@
 package Assignment01;
 
 import javax.swing.*;
-
 import java.awt.Font;
 import java.util.Random;
 
