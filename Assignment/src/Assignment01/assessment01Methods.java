@@ -81,10 +81,10 @@ public class assessment01Methods {
 
 	public static String randomNumbers(int N, int M) {
 		
-		//generates random numbers for the table, arranges them in odd numbers for odd rows 
-		//and even numbers for even rows
-		//averages the rows and columns and provides a total average for the table
-		//returns the output to the gridInput method.
+//		generates random numbers for the table, arranges them in odd numbers for odd rows 
+//		and even numbers for even rows
+//		averages the rows and columns and provides a total average for the table
+//		returns the output to the gridInput method.
 		
 		
 		int[][] matrix = new int[N][M]; // 2D array for table
@@ -111,12 +111,13 @@ public class assessment01Methods {
 	            
 	            output.append(String.format(" | %8d |",value));
 	        }
+	     //adds the average of the row on a new entry   
 	        rowAverages[r] = (double) rowSum / M;
 	        output.append(String.format(" | %8.2f |", rowAverages[r])); // row average
 	        output.append("\n");
 	    }
 	    
-	    // Add row for column averages
+	  //adds the average of the column on a new entry  
 	    for (int c = 0; c < M; c++) {
 	    	columnAverages[c] = (double) columnSums[c] / N;
 	        output.append(String.format(" | %8.2f |", columnAverages[c]));
@@ -124,7 +125,7 @@ public class assessment01Methods {
 	    
 	    // Append overall average in the last "corner" cell
 	    double overallAvg = (double) totalSum / (N * M);
-	    output.append(String.format(" | %8.2f |", overallAvg)); // bottom-right corner
+	    output.append(String.format(" | %8.2f |", overallAvg)); // display bottom-right corner Average
 	    
 	    // Find second largest row average
 	    double secondLargestRowAvg = SecondLargest(rowAverages); //calls method 

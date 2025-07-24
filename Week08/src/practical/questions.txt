@@ -1,0 +1,49 @@
+Tutorial Questions
+(Week 8)
+
+1 Queues, such as those found in a post-office are often described as first-in first-out (FIFO) Using an appropriate collection write a class called PostOfficeQueueSimulator. Your class should be able to simulate people arriving at a post office, queuing, and being served.  Queuing is done on a FIFO basis.  Your class should include the following methods.
+
+name			||	description
+add(Person p)	||	add the person p to the back of the queue
+serve()			||	remove a person from the front of the queue
+queueLength()	||	return the number of people in the queue
+printQueue()	||	print the names of all of the people in the queue
+whoseAt(int x)	||	print the name of the person at position x in the queue
+whoseAtFront()	||	print the name of the person at the front of the queue
+
+Write a small program to demonstrate your class working.
+
+2 Write a simple class called Song which just has one attribute, the title.  Now write a class called JukeBox, the JukeBox will have a collection of songs waiting to be played – the playlist, you will need to choose an appropriate collection.  Your class should include the following methods.
+
+name								||	description
+addSong(Song s)						||	add a song to the playlist
+play()								||	play the next song in the playlist and remove it from the playlist
+printPlayList()						||	print all songs in the playlist.
+size()								||	print the size of the playlist
+addSongs(Collection <Song> songs)	||	add a collection of songs to the playlist
+
+Write a small program to demonstrate your class working.
+3 When companies make redundancies they often do so on a last-in first-out (LIFO) basis.  Using an appropriate collection class write a class called EmploymentSimulator.  Your class should be able to simulate people being employed by a company and the company making redundancies on a LIFO basis.  Your class should include the following methods.
+
+
+name					||	description
+employ(Person p)		||	add the person p to the employment list
+makeRedundant()			||	remove the person currently next in line for redundancy
+printNextForTheChop()	||	print details of the person currently next in line for redundancy. Do not alter the list.
+companySize()			||	return the number of people on the employment list
+printEmployees()		||	print the details of all employees
+
+Write a small program to demonstrate your class working.
+
+4 Using an appropriate Map develop an electronic address book.  The address book should allow the user to add names, remove names and display its contents. Your class should include the following methods.
+
+
+name									||	description
+addEntry()								||	asks the user for their name and address and adds them to the address book
+addEntry(String name, String address)	||	adds the name and address to the address book
+deleteEntry()							||	allows the user to select an entry to remove and removes it from the address book
+deleteEntry (String key)				||	removes the entry with this key from the address book
+displayContents()						||	displays all names and addresses in the address book, sorted alphabetically by name
+go()									||	starts a menu system to allow the user to add entries to, delete entries from or view the contents of the address book
+
+

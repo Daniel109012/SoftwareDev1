@@ -1,7 +1,8 @@
 Tutorial Questions
 (Week 7)
 
-1 Without using the code written in class (i.e. write all this from scratch) create the class Person as shown in the lecture slides.  The UML diagram is given below.  Write a small demo program to show your class working.
+1 Without using the code written in class (i.e. write all this from scratch) create the class Person as shown in the lecture slides.  
+The UML diagram is given below.  Write a small demo program to show your class working.
 
 
 Person
@@ -15,27 +16,36 @@ toString()
 printDetails() 
 
 
-2  Add get and set methods for each of the instance variables.  Write a small demo program to show your class working.
+2  Add get and set methods for each of the instance variables. 
+ Write a small demo program to show your class working.
 
-3 Modify the class Person by adding a method called happyBirthday(). The method should add one to the value of the instance variable age.
+3 Modify the class Person by adding a method called happyBirthday(). 
+The method should add one to the value of the instance variable age.
 Write a small demo program to show your class working.
 
-4 Using an array, write a small program that stores the details of three people. Your program should print out the details of these people to verify that they are stored correctly.
+4 Using an array, write a small program that stores the details of three people.
+ Your program should print out the details of these people to verify that they are stored correctly.
 
 
  
 
-5 Extend the class Person by adding more constructors. The signatures of the constructors are given. Any instance variables that cannot be set by the constructor should be set to a default value. Strings should default to “unknown” and int should default to 0. Write a small program to demonstrate each of the constructors being used.
+5 Extend the class Person by adding more constructors. 
+The signatures of the constructors are given. Any instance variables that cannot be set by the constructor should be set to a default value.
+ Strings should default to “unknown” and int should default to 0. Write a small program to demonstrate each of the constructors being used.
 
 Person (String name, int age)
 Person (String name String address)
 Person (int age)
 
 
-6 Modify the constructor with no parameters to set all the instance variable to the new default values.  Write a small demo program to show your class working.
+6 Modify the constructor with no parameters to set all the instance variable to the new default values. 
+ Write a small demo program to show your class working.
  
 
-7 Create a class called Rectangle. The class has attributes height and width each of which defaults to 1. The class should have public methods to set each of the attributes. It has public methods that calculate and print the perimeter and the area of the rectangle. (You may assume that height and width will be integers).
+7 Create a class called Rectangle. The class has attributes height and width each of which defaults to 1. 
+The class should have public methods to set each of the attributes. 
+It has public methods that calculate and print the perimeter and the area of the rectangle. 
+(You may assume that height and width will be integers).
 
 
 Add the following methods to the Rectangle class created in the previous question. 
@@ -51,8 +61,11 @@ Add the following methods to the Rectangle class created in the previous questio
 
 Write a small program to demonstrate your class working
 
-8 Add a constructor to the Rectangle class which takes two arguments, the height and the width. You should also modify the original constructor so that it calls the new constructor to ensure that no code is duplicated.   Write a small program to demonstrate your class working.
+8 Add a constructor to the Rectangle class which takes two arguments, the height and the width.
+ You should also modify the original constructor so that it calls the new constructor to ensure that no code is duplicated.  
+  Write a small program to demonstrate your class working.
 
 
-9 Add a class variable to the class Rectangle to count how many instances of the class are created.  Write a small program to demonstrate your class working.
+9 Add a class variable to the class Rectangle to count how many instances of the class are created. 
+ Write a small program to demonstrate your class working.
 
