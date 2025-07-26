@@ -32,6 +32,7 @@ public class Person {
 	}
 	
 	public String toString() {
+		
 		String output;
 		
 		output ="My name is " +this.name  + " and I am " + this.age + " years old" + " I live at " + this.address; //calls from get___()

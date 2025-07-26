@@ -8,39 +8,70 @@ public class Person {
 	private String address;
 	private int age;
 	
-	public Person() {}
+	public Person() {
+//		String output;
+//		
+//		output = "Constructors to be Called";
+//		
+//		JOptionPane.showMessageDialog(null, output);
+	}
+	
+//	public Person(String name, int age, String address) {
+//		=========Array=======		//
+		
+//		this.name = name;
+//		this.age =  age;
+//		this.address =  address;
+//		
+//	}
+//	
+//	public Person (String name, int age) {
+//		
+//		this.age = age;
+//		this.name = name;
+//		this.address = " unknown";
+//		
+//		
+//	}
+//	public Person (String name, String address) {
+//		
+//		this.age = 0;
+//		this.name = name;
+//		this.address = address;
+//	}
+//	
+//	public Person (int age){
+//		
+//		this.age = age;
+//		this.name = "unknown";
+//		this.address = "unknown";
+//		
+//	}
 	
 	public String toString() {
 		
 		String output;
 		
-		output = "my name is " + this.name + " and I am " + this.age + " \n and I leave at " + this.address;
+		output = "My name is " + this.name + " , I am " + this.age + " \n and I leave at " + this.address;
 		
 		return output;
 		
 	}
 	
 	
-	public String happyBirthday() {
-		
-		String output;
-		
-		output = "my age is " + this.age;
-		
-		return output;
-		
-	}
+//	public String happyBirthday() {
+//		
+//			String output;
+//			
+//			output = " I am " + (this.age + 1);
+//			
+//			return output;
+//		
+//	}
 	
 	
 	
-	public Person(String name, int age, String address) {
-//		=========Array=======		//
-		
-		this.name = name;
-		this.age =  age;
-		this.address =  address;
-		
-	}
+
 	
 	public void printDetails() {
 		
@@ -49,8 +80,8 @@ public class Person {
 		String output;
 		output = toString();
 		JOptionPane.showMessageDialog(null, output);
-		output = happyBirthday();
-		JOptionPane.showMessageDialog(null, output);
+//		output = happyBirthday();
+//		JOptionPane.showMessageDialog(null, output);
 
 	}
 	
