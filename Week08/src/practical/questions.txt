@@ -1,7 +1,8 @@
 Tutorial Questions
 (Week 8)
 
-1 Queues, such as those found in a post-office are often described as first-in first-out (FIFO) Using an appropriate collection write a class called PostOfficeQueueSimulator. Your class should be able to simulate people arriving at a post office, queuing, and being served.  Queuing is done on a FIFO basis.  Your class should include the following methods.
+1 Queues, such as those found in a post-office are often described as first-in first-out (FIFO) Using an appropriate collection write a class called PostOfficeQueueSimulator. 
+Your class should be able to simulate people arriving at a post office, queuing, and being served.  Queuing is done on a FIFO basis.  Your class should include the following methods.
 
 name			||	description
 add(Person p)	||	add the person p to the back of the queue
@@ -13,7 +14,8 @@ whoseAtFront()	||	print the name of the person at the front of the queue
 
 Write a small program to demonstrate your class working.
 
-2 Write a simple class called Song which just has one attribute, the title.  Now write a class called JukeBox, the JukeBox will have a collection of songs waiting to be played – the playlist, you will need to choose an appropriate collection.  Your class should include the following methods.
+2 Write a simple class called Song which just has one attribute, the title. 
+ Now write a class called JukeBox, the JukeBox will have a collection of songs waiting to be played – the playlist, you will need to choose an appropriate collection.  Your class should include the following methods.
 
 name								||	description
 addSong(Song s)						||	add a song to the playlist
