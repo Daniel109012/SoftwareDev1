@@ -15,7 +15,10 @@ whoseAtFront()	||	print the name of the person at the front of the queue
 Write a small program to demonstrate your class working.
 
 2 Write a simple class called Song which just has one attribute, the title. 
- Now write a class called JukeBox, the JukeBox will have a collection of songs waiting to be played – the playlist, you will need to choose an appropriate collection.  Your class should include the following methods.
+ Now write a class called JukeBox, the JukeBox will have a collection 
+ of songs waiting to be played – the playlist, you will 
+ need to choose an appropriate collection. 
+  Your class should include the following methods.
 
 name								||	description
 addSong(Song s)						||	add a song to the playlist
@@ -25,7 +28,11 @@ size()								||	print the size of the playlist
 addSongs(Collection <Song> songs)	||	add a collection of songs to the playlist
 
 Write a small program to demonstrate your class working.
-3 When companies make redundancies they often do so on a last-in first-out (LIFO) basis.  Using an appropriate collection class write a class called EmploymentSimulator.  Your class should be able to simulate people being employed by a company and the company making redundancies on a LIFO basis.  Your class should include the following methods.
+
+3 When companies make redundancies they often do so on a last-in first-out (LIFO) basis. 
+ Using an appropriate collection class write a class called EmploymentSimulator.  
+ Your class should be able to simulate people being employed by a company and the company making redundancies on a LIFO basis.  
+ Your class should include the following methods.
 
 
 name					||	description
