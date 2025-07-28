@@ -44,7 +44,9 @@ printEmployees()		||	print the details of all employees
 
 Write a small program to demonstrate your class working.
 
-4 Using an appropriate Map develop an electronic address book.  The address book should allow the user to add names, remove names and display its contents. Your class should include the following methods.
+4 Using an appropriate Map develop an electronic address book.
+ The address book should allow the user to add names, remove names and display its contents.
+ Your class should include the following methods.
 
 
 name									||	description
