@@ -1,0 +1,9 @@
+Tutorial Questions
+(Week 9)
+
+1 Use aggregation to model the following:
+" A Module  is made up of ten lectures. Each lecture has a name"
+"A postgraduate diploma is made up of six modules"
+Write a small program to demonstrate the aggregation working.  
+Choose a few appropriate attributes for each class.
+
