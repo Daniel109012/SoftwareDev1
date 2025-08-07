@@ -18,11 +18,11 @@ public class Round {
 	public String getSummary() {
 	StringBuilder output = new StringBuilder();
 	
-	output.append("====== Round =======\n ")
+	output.append("======== Round ========\n ")
 	.append(roundNumber)
 	.append(": Bet $")
 	.append(bet)
-	.append(", Rolls: ");
+	.append(",\n Rolls: ");
 	
 	for(int r : rolls) output.append(r).append(", ");
 	int net = winnings - bet;
