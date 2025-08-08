@@ -7,7 +7,7 @@ public class Round {
 	private int[] rolls;
 	private int winnings;
 	
-	public Round(int roundNumber, int bet, int[] rolls, int winnings) {
+	public Round(int roundNumber, int[] rolls, int bet, int winnings) {
 		this.roundNumber = roundNumber;
 		this.bet = bet;
 		this.rolls = rolls;
@@ -18,18 +18,22 @@ public class Round {
 	public String getSummary() {
 	StringBuilder output = new StringBuilder();
 	
-	output.append("======== Round ========\n ")
-	.append(roundNumber)
-	.append(": Bet $")
-	.append(bet)
-	.append(",\n Rolls: ");
 	
-	for(int r : rolls) output.append(r).append(", ");
+	
+	output.append("======== Round " + roundNumber + " ========\n");
+//	.append(roundNumber)
+	output.append("Rolls   :  " + " ");
+	for(int r : rolls)output.append(r).append(",  ");
+	output.append("\nBet      :   $")
+	.append(bet + "\n")
+	;
+	
+	
 	int net = winnings - bet;
 	if (net >= 0) {
-		output.append("Result     : +$").append(net).append("\n");
+		output.append("Win     : +$").append(net).append("\n");
 	}else {
-		output.append("Result     : -$").append(Math.abs(net)).append("\n");
+		output.append("lose     : -$").append(Math.abs(net)).append("\n");
 	}
 	
 	output.append("=======================");
@@ -38,6 +42,11 @@ public class Round {
 	
 	}//end getSummary
 	
+//	private StringBuilder roll(int r) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	public int getNetChange() {
 		return winnings - bet;
 	}

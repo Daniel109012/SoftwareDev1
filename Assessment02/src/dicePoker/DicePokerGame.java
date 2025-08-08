@@ -4,47 +4,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 public class DicePokerGame {
 
 	private static final int MAX_ROUNDS = 5;
 	private static final int STARTING_BANK = 6;
-
 	private int bank = STARTING_BANK;
 	private int round = 0;
 	private Dice dice;
 	private List<Round> rounds;
+	
+	//==================================================================================================\\
 
 	public DicePokerGame() {
 		dice = new Dice();
 		rounds = new ArrayList<>();
 
 	}//End Method DicePokerGame
+	
+	//==================================================================================================\\
 
 	public void start() {
-		boolean playAgain = false;
-		
+		boolean playAgain;
+
 		do {
 			restart();
-			endGame();
-			
-//			int option = JOptionPane.showConfirmDialog(null, "Your Bank balance is $" + bank + ".\n Would you want to bet again?",
-//					"Continue?",
-//					JOptionPane.YES_NO_OPTION);
-//			playAgain = (option == JOptionPane.YES_OPTION);
+			betRounds();
+
+			int option = JOptionPane.showConfirmDialog(null, "Your Bank balance is $" + bank + ".\n Would you want to bet again?",
+					"Continue?",
+					JOptionPane.YES_NO_OPTION);
+			playAgain = (option == JOptionPane.YES_OPTION);
 
 		}while (playAgain);
 
 	}//end Method start
-	
+
 	private void restart(){
 		bank = STARTING_BANK;
 		round = 0;
 		rounds.clear();
 	}
 	
-	private void endGame() {
-		
+	//==================================================================================================\\
+
+	private void betRounds() {
+
 		boolean anotherBet = true;
 
 		while (bank > 0 && round < MAX_ROUNDS && anotherBet) {
@@ -53,33 +59,55 @@ public class DicePokerGame {
 			int[] diceRolls = dice.getDiceRolls();
 			int winnings = WinningsCalculator.calculateWinnings(diceRolls, bet);
 
-			Round gameRound = new Round(++round, bet, diceRolls, winnings);
+
+			Round gameRound = new Round(++round, diceRolls, bet, winnings);
 			rounds.add(gameRound);
 			bank += gameRound.getNetChange();
 
-			JOptionPane.showMessageDialog(null, rollMsg + "\n" + gameRound.getSummary());
-			
-//			if(bank > 0 && round < MAX_ROUNDS) {
-//				int option = JOptionPane.showConfirmDialog(null, "Your Bank balance is $" + bank + ".\n Would you want to bet again?",
-//						"Continue?",
-//						JOptionPane.YES_NO_OPTION);
-//				anotherBet = (option == JOptionPane.YES_OPTION);
-//			}
+			JOptionPane.showMessageDialog(null, /*rollMsg +*/ "\n" + gameRound.getSummary());
 
 		}
-	    showFinalSummary();
+		showFinalSummary();
 
 	}
-	
 
+	//==================================================================================================\\
+	
 	private int getBetAmount() {
 		int bet = 1;
+		int maxBet;
 		boolean valid = false;
 
-		do {
-			String input = JOptionPane.showInputDialog("Round " + (round + 1) + ": You have $" + bank + ". Enter your bet (1-" + bank + "):");
-			if (input == null) {
 
+		while (!valid) {
+			JTextField betButton = new JTextField();
+			
+
+			//add code for bank less than 4
+			if(bank >= 4) 
+			{maxBet = 4;}
+			else{maxBet = bank;}
+			
+			Object[] gameMessage  = {
+					"Round " + (round + 1) + ": You have $" + bank + ". Enter your bet (1 - " + maxBet + "):",betButton
+			};
+			
+
+			Object[] buttons = {"Bet", "Quit"};
+
+			int option = JOptionPane.showOptionDialog(
+					null,
+					gameMessage,
+					"Place Your Bet",
+					JOptionPane.YES_NO_OPTION,
+					JOptionPane.PLAIN_MESSAGE,
+					null,
+					buttons,
+					buttons[0]
+					);
+
+
+			if (option == JOptionPane.NO_OPTION || option == JOptionPane.CLOSED_OPTION) {
 				int confirmExit = JOptionPane.showConfirmDialog(
 						null,
 						"Are you sure you want to exit the game?",
@@ -95,6 +123,8 @@ public class DicePokerGame {
 				}
 			}
 
+			String input = betButton.getText().trim();
+
 			if( input.isBlank() || !input.matches("\\d+")) continue;
 			bet = Integer.parseInt(input);
 			if(bet < 1 || bet > bank) continue;
@@ -108,17 +138,19 @@ public class DicePokerGame {
 		return bet;
 
 	}//end getBetAmount
+	
+	//==================================================================================================\\
 
 	private void showFinalSummary() {
 		StringBuilder output = new StringBuilder("Game Over!\n\n");
 		for(Round r : rounds) {
 			output.append(r.getSummary()).append("\n");
 		}
-		
 
 		output.append("\nFinal Bank: $").append(bank).append("\n");
 		if(bank <= 0) output.append("You Ran out of Money.");
 		else if (round >= MAX_ROUNDS) output.append("You have reached the max number of rounds");
+
 
 		JOptionPane.showMessageDialog(null, output.toString());
 
