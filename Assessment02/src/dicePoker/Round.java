@@ -42,10 +42,6 @@ public class Round {
 	
 	}//end getSummary
 	
-//	private StringBuilder roll(int r) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	public int getNetChange() {
 		return winnings - bet;

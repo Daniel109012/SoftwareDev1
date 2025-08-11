@@ -8,12 +8,15 @@ import javax.swing.JTextField;
 
 public class DicePokerGame {
 
-	private static final int MAX_ROUNDS = 5;
+	private static final int MAX_BETS = 5;
 	private static final int STARTING_BANK = 6;
-	private int bank = STARTING_BANK;
-	private int round = 0;
-	private Dice dice;
+	private static List<ScoreEntry> highScore = new ArrayList<ScoreEntry>();
 	private List<Round> rounds;
+	private int bank = STARTING_BANK;
+	private int bets = 0;
+	private Dice dice;
+	private String playerName;
+	
 	
 	//==================================================================================================\\
 
@@ -27,12 +30,14 @@ public class DicePokerGame {
 
 	public void start() {
 		boolean playAgain;
+		
+		playerName = JOptionPane.showInputDialog("Enter Your Name");
 
 		do {
 			restart();
 			betRounds();
 
-			int option = JOptionPane.showConfirmDialog(null, "Your Bank balance is $" + bank + ".\n Would you want to bet again?",
+			int option = JOptionPane.showConfirmDialog(null, " Would you want to restart the game?",
 					"Continue?",
 					JOptionPane.YES_NO_OPTION);
 			playAgain = (option == JOptionPane.YES_OPTION);
@@ -43,7 +48,7 @@ public class DicePokerGame {
 
 	private void restart(){
 		bank = STARTING_BANK;
-		round = 0;
+		bets = 0;
 		rounds.clear();
 	}
 	
@@ -53,21 +58,21 @@ public class DicePokerGame {
 
 		boolean anotherBet = true;
 
-		while (bank > 0 && round < MAX_ROUNDS && anotherBet) {
+		while (bank > 0 && bets < MAX_BETS && anotherBet) {
 			int bet = getBetAmount();
 			String rollMsg = dice.rollDice();
 			int[] diceRolls = dice.getDiceRolls();
 			int winnings = WinningsCalculator.calculateWinnings(diceRolls, bet);
 
 
-			Round gameRound = new Round(++round, diceRolls, bet, winnings);
+			Round gameRound = new Round(++bets, diceRolls, bet, winnings);
 			rounds.add(gameRound);
 			bank += gameRound.getNetChange();
 
 			JOptionPane.showMessageDialog(null, /*rollMsg +*/ "\n" + gameRound.getSummary());
 
 		}
-		showFinalSummary();
+		Results();//result method
 
 	}
 
@@ -77,6 +82,8 @@ public class DicePokerGame {
 		int bet = 1;
 		int maxBet;
 		boolean valid = false;
+		
+		
 
 
 		while (!valid) {
@@ -89,7 +96,7 @@ public class DicePokerGame {
 			else{maxBet = bank;}
 			
 			Object[] gameMessage  = {
-					"Round " + (round + 1) + ": You have $" + bank + ". Enter your bet (1 - " + maxBet + "):",betButton
+					"Round " + (bets + 1) + ":\nYou have $" + bank + ". The bet costs 1$. Enter your Bet (1$ - " + maxBet + "$):",betButton
 			};
 			
 
@@ -116,7 +123,7 @@ public class DicePokerGame {
 						);
 
 				if (confirmExit == JOptionPane.YES_OPTION) {
-					showFinalSummary();//show results so far
+					Results();//show results so far
 					System.exit(0);//exit
 				}else{
 					continue;//stay in game
@@ -128,10 +135,9 @@ public class DicePokerGame {
 			if( input.isBlank() || !input.matches("\\d+")) continue;
 			bet = Integer.parseInt(input);
 			if(bet < 1 || bet > bank) continue;
-			if (bet > bank) {
-				JOptionPane.showMessageDialog(null, "You do not have Suficient to Bet");
-				continue;
-			}
+			
+			bank--;
+
 			valid = true;
 		}while(!valid);
 
@@ -141,7 +147,7 @@ public class DicePokerGame {
 	
 	//==================================================================================================\\
 
-	private void showFinalSummary() {
+	private void Results() {
 		StringBuilder output = new StringBuilder("Game Over!\n\n");
 		for(Round r : rounds) {
 			output.append(r.getSummary()).append("\n");
@@ -149,11 +155,26 @@ public class DicePokerGame {
 
 		output.append("\nFinal Bank: $").append(bank).append("\n");
 		if(bank <= 0) output.append("You Ran out of Money.");
-		else if (round >= MAX_ROUNDS) output.append("You have reached the max number of rounds");
+		else if (bets >= MAX_BETS) output.append("You have reached the max number of rounds");
 
 
 		JOptionPane.showMessageDialog(null, output.toString());
+		
+		
+		//Store Score in high Score List
+		highScore.add(new ScoreEntry(playerName, bank));
+		highScore.sort((a, b) -> Integer.compare(b.score, a.score));
+		
+		//Show High Score table
+		StringBuilder HighScore = new StringBuilder("High Score \n");
+		for (int i = 0; i < highScore.size(); i++) {
+			ScoreEntry entry = highScore.get(i);
+			HighScore.append(i + 1).append(". ").append(entry.name)
+.append(" - $").append(entry.score).append("\n");
+		}
+		
+		JOptionPane.showMessageDialog(null, HighScore.toString(), "High Score", JOptionPane.PLAIN_MESSAGE);
 
-	}//end showFinalSummary
+	}//end Results
 
 }//End Class DicePokerGame
