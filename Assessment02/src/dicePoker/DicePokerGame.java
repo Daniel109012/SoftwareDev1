@@ -175,7 +175,7 @@ public class DicePokerGame {
 		for (int i = 0; i < highScore.size(); i++) {
 			ScoreEntry entry = highScore.get(i);
 			HighScore.append(i + 1).append(". ").append(entry.name)
-.append(" - $").append(entry.score).append("\n");
+.append(" your Bank acount is $").append(entry.score).append("\n");
 		}
 		
 		JOptionPane.showMessageDialog(null, HighScore.toString(), "High Score", JOptionPane.PLAIN_MESSAGE);
