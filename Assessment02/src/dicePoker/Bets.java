@@ -1,13 +1,13 @@
 package dicePoker;
 
-public class Round {
+public class Bets {
 	
 	public int roundNumber;
 	private int bet;
 	private int[] rolls;
 	private int winnings;
 	
-	public Round(int roundNumber, int[] rolls, int bet, int winnings) {
+	public Bets(int roundNumber, int[] rolls, int bet, int winnings) {
 		this.roundNumber = roundNumber;
 		this.bet = bet;
 		this.rolls = rolls;

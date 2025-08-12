@@ -11,7 +11,7 @@ public class DicePokerGame {
 	private static final int MAX_BETS = 5;
 	private static final int STARTING_BANK = 6;
 	private static List<ScoreEntry> highScore = new ArrayList<ScoreEntry>();
-	private List<Round> rounds;
+	private List<Bets> rounds;
 	private int bank = STARTING_BANK;
 	private int bets = 0;
 	private Dice dice;
@@ -58,14 +58,14 @@ public class DicePokerGame {
 
 		boolean anotherBet = true;
 
-		while (bank > 0 && bets < MAX_BETS && anotherBet) {
+		while (bank > 1 && bets < MAX_BETS && anotherBet) {
 			int bet = getBetAmount();
 			String rollMsg = dice.rollDice();
 			int[] diceRolls = dice.getDiceRolls();
 			int winnings = WinningsCalculator.calculateWinnings(diceRolls, bet);
 
 
-			Round gameRound = new Round(++bets, diceRolls, bet, winnings);
+			Bets gameRound = new Bets(++bets, diceRolls, bet, winnings);
 			rounds.add(gameRound);
 			bank += gameRound.getNetChange();
 
@@ -91,12 +91,14 @@ public class DicePokerGame {
 			
 
 			//add code for bank less than 4
-			if(bank >= 4) 
+			if(bank == 1) {
+				maxBet = 1;
+			}else if(bank >= 4) 
 			{maxBet = 4;}
-			else{maxBet = bank;}
+			else{maxBet = bank - 1;}
 			
 			Object[] gameMessage  = {
-					"Round " + (bets + 1) + ":\nYou have $" + bank + ". The bet costs 1$. Enter your Bet (1$ - " + maxBet + "$):",betButton
+					"Round " + (bets + 1) + ":\nYou have $" + bank + ". The bet costs 1$. Enter your Bet (1$ to " + maxBet + "$):",betButton
 			};
 			
 
@@ -134,12 +136,15 @@ public class DicePokerGame {
 
 			if( input.isBlank() || !input.matches("\\d+")) continue;
 			bet = Integer.parseInt(input);
-			if(bet < 1 || bet > bank) continue;
 			
+			if(bet < 1 || bet > maxBet) {
+				JOptionPane.showMessageDialog(null, "your Bet must be between 1$ and " +  maxBet + "$");
+				continue;
+			}
 			bank--;
 
 			valid = true;
-		}while(!valid);
+		}
 
 		return bet;
 
@@ -149,12 +154,12 @@ public class DicePokerGame {
 
 	private void Results() {
 		StringBuilder output = new StringBuilder("Game Over!\n\n");
-		for(Round r : rounds) {
+		for(Bets r : rounds) {
 			output.append(r.getSummary()).append("\n");
 		}
 
 		output.append("\nFinal Bank: $").append(bank).append("\n");
-		if(bank <= 0) output.append("You Ran out of Money.");
+		if(bank <= 1) output.append("You Ran out of Money.");
 		else if (bets >= MAX_BETS) output.append("You have reached the max number of rounds");
 
 
