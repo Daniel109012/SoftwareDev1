@@ -8,14 +8,15 @@ import javax.swing.JTextField;
 
 public class DicePokerGame {
 
-	private static final int MAX_BETS = 5;
-	private static final int STARTING_BANK = 6;
-	private static List<ScoreEntry> highScore = new ArrayList<ScoreEntry>();
-	private List<Bets> rounds;
-	private int bank = STARTING_BANK;
-	private int bets = 0;
-	private Dice dice;
-	private String playerName;
+	private static final int MAX_BETS = 5; //the maximum numbers of rounds or bets in a single start
+	private static final int STARTING_BANK = 6; //default number of Dollars in the bank 
+	private static List<ScoreEntry> highScore = new ArrayList<ScoreEntry>(); // Game reslults
+	
+	private List<Bets> rounds; //details for each bet
+	private int bank = STARTING_BANK; // players money
+	private int bets = 0; //tracks number of rounds
+	private Dice dice; //rolles of dice
+	private String playerName; //name of player durring the game
 	
 	
 	//==================================================================================================\\
@@ -30,12 +31,19 @@ public class DicePokerGame {
 
 	public void start() {
 		boolean playAgain;
+		int restartCount = 0; //how many restarts happen
 		
 		playerName = JOptionPane.showInputDialog("Enter Your Name");
 
 		do {
 			restart();
 			betRounds();
+			restartCount++;
+			
+			if(restartCount >=5) { //max number of restarts
+				JOptionPane.showMessageDialog(null, "You have reached the max Number of Restarts (" + restartCount + "). Game Over!");
+				break;
+			}
 
 			int option = JOptionPane.showConfirmDialog(null, " Would you want to restart the game?",
 					"Continue?",
@@ -60,9 +68,9 @@ public class DicePokerGame {
 
 		while (bank > 1 && bets < MAX_BETS && anotherBet) {
 			int bet = getBetAmount();
-			String rollMsg = dice.rollDice();
+			dice.rollDice();
 			int[] diceRolls = dice.getDiceRolls();
-			int winnings = WinningsCalculator.calculateWinnings(diceRolls, bet);
+			int winnings = Wins.calculateWinnings(diceRolls, bet);
 
 
 			Bets gameRound = new Bets(++bets, diceRolls, bet, winnings);

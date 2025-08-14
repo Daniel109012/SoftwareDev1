@@ -2,7 +2,7 @@ package dicePoker;
 
 import java.util.Arrays;
 
-public class WinningsCalculator {
+public class Wins {
 	
 	public static int calculateWinnings(int[] rolls, int bet) {
 		
