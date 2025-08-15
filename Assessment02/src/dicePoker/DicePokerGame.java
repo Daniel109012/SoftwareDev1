@@ -25,11 +25,11 @@ public class DicePokerGame {
 		dice = new Dice();
 		rounds = new ArrayList<>();
 
-	}//End Method DicePokerGame
+	}//End constructor DicePokerGame
 	
 	//==================================================================================================\\
 
-	public void start() {
+	public void start() { //loops game until restart limit is reached or player quits
 		boolean playAgain;
 		int restartCount = 0; //how many restarts happen
 		
@@ -54,7 +54,7 @@ public class DicePokerGame {
 
 	}//end Method start
 
-	private void restart(){
+	private void restart(){ //resets game to fresh game
 		bank = STARTING_BANK;
 		bets = 0;
 		rounds.clear();
@@ -62,7 +62,7 @@ public class DicePokerGame {
 	
 	//==================================================================================================\\
 
-	private void betRounds() {
+	private void betRounds() { //bet rounds until the money runs out
 
 		boolean anotherBet = true;
 
@@ -86,7 +86,7 @@ public class DicePokerGame {
 
 	//==================================================================================================\\
 	
-	private int getBetAmount() {
+	private int getBetAmount() { //asks the player the amount to bet and if user quits mid game
 		int bet = 1;
 		int maxBet;
 		boolean valid = false;
@@ -160,7 +160,7 @@ public class DicePokerGame {
 	
 	//==================================================================================================\\
 
-	private void Results() {
+	private void Results() { //display the game summary updates the score and displays it
 		StringBuilder output = new StringBuilder("Game Over!\n\n");
 		for(Bets r : rounds) {
 			output.append(r.getSummary()).append("\n");

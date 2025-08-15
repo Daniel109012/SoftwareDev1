@@ -7,9 +7,9 @@ public class ScoreEntry {
 	
 	public ScoreEntry(String name, int score) {
 		
-		this.name = name;
-		this.score = score;
+		this.name = name; //players name
+		this.score = score; //final bank amount
 		
-	}
+	} //end constructor. stores the info for player and score
 
-}
+}//end class
