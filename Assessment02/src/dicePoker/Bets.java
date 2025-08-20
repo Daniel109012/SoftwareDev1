@@ -2,7 +2,7 @@ package dicePoker;
 
 public class Bets {
 
-	public int roundNumber; //which bet is being played
+	public int roundNumber; //which bet(round) is being played
 	private int bet; //the amount being bet
 	private int[] rolls; //what number in which the dice fell
 	private int winnings; //amount won or lost

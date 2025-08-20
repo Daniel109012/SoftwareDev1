@@ -1,7 +1,7 @@
 package dicePoker;
 
 public class DicePokerMain {
-	
+
 	//Main runs the Game or program
 	//without main the game will not run
 

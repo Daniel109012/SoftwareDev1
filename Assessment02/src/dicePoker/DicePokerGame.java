@@ -9,16 +9,17 @@ import javax.swing.JTextField;
 public class DicePokerGame {
 
 	private static final int MAX_BETS = 5; //the maximum numbers of rounds or bets in a single start
+	private static final int MAX_RESTART = 5; //the max number of restarts the user is allowed 
 	private static final int STARTING_BANK = 6; //default number of Dollars in the bank 
 	private static List<ScoreEntry> highScore = new ArrayList<ScoreEntry>(); // Game reslults
-	
+
 	private List<Bets> rounds; //details for each bet
 	private int bank = STARTING_BANK; // players money
 	private int bets = 0; //tracks number of rounds
 	private Dice dice; //rolles of dice
 	private String playerName; //name of player durring the game
-	
-	
+
+
 	//==================================================================================================\\
 
 	public DicePokerGame() {
@@ -26,21 +27,21 @@ public class DicePokerGame {
 		rounds = new ArrayList<>();
 
 	}//End constructor DicePokerGame
-	
+
 	//==================================================================================================\\
 
 	public void start() { //loops game until restart limit is reached or player quits
 		boolean playAgain;
 		int restartCount = 0; //how many restarts happen
-		
+
 		playerName = JOptionPane.showInputDialog("Enter Your Name");
 
 		do {
 			restart();
 			betRounds();
 			restartCount++;
-			
-			if(restartCount >=5) { //max number of restarts
+
+			if(restartCount >= MAX_RESTART) { //max number of restarts
 				JOptionPane.showMessageDialog(null, "You have reached the max Number of Restarts (" + restartCount + "). Game Over!");
 				break;
 			}
@@ -59,7 +60,7 @@ public class DicePokerGame {
 		bets = 0;
 		rounds.clear();
 	}
-	
+
 	//==================================================================================================\\
 
 	private void betRounds() { //bet rounds until the money runs out
@@ -85,18 +86,18 @@ public class DicePokerGame {
 	}
 
 	//==================================================================================================\\
-	
+
 	private int getBetAmount() { //asks the player the amount to bet and if user quits mid game
 		int bet = 1;
 		int maxBet;
 		boolean valid = false;
-		
-		
+
+
 
 
 		while (!valid) {
 			JTextField betButton = new JTextField();
-			
+
 
 			//add code for bank less than 4
 			if(bank == 1) {
@@ -104,11 +105,11 @@ public class DicePokerGame {
 			}else if(bank >= 4) 
 			{maxBet = 4;}
 			else{maxBet = bank - 1;}
-			
+
 			Object[] gameMessage  = {
 					"Round " + (bets + 1) + ":\nYou have $" + bank + ". The bet costs 1$. Enter your Bet (1$ to " + maxBet + "$):",betButton
 			};
-			
+
 
 			Object[] buttons = {"Bet", "Quit"};
 
@@ -144,7 +145,7 @@ public class DicePokerGame {
 
 			if( input.isBlank() || !input.matches("\\d+")) continue;
 			bet = Integer.parseInt(input);
-			
+
 			if(bet < 1 || bet > maxBet) {
 				JOptionPane.showMessageDialog(null, "your Bet must be between 1$ and " +  maxBet + "$");
 				continue;
@@ -157,7 +158,7 @@ public class DicePokerGame {
 		return bet;
 
 	}//end getBetAmount
-	
+
 	//==================================================================================================\\
 
 	private void Results() { //display the game summary updates the score and displays it
@@ -172,20 +173,20 @@ public class DicePokerGame {
 
 
 		JOptionPane.showMessageDialog(null, output.toString());
-		
-		
+
+
 		//Store Score in high Score List
 		highScore.add(new ScoreEntry(playerName, bank));
 		highScore.sort((a, b) -> Integer.compare(b.score, a.score));
-		
+
 		//Show High Score table
 		StringBuilder HighScore = new StringBuilder("High Score \n");
 		for (int i = 0; i < highScore.size(); i++) {
 			ScoreEntry entry = highScore.get(i);
 			HighScore.append(i + 1).append(". ").append(entry.name)
-.append(" your Bank acount is $").append(entry.score).append("\n");
+			.append(" your Bank acount is $").append(entry.score).append("\n");
 		}
-		
+
 		JOptionPane.showMessageDialog(null, HighScore.toString(), "High Score", JOptionPane.PLAIN_MESSAGE);
 
 	}//end Results

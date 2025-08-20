@@ -25,7 +25,7 @@ public class Dice {
 
 		for(int i = 0; i < numDice; i++) {
 			diceRolls[i] = dice.nextInt(diceSides) + 1; //dice sides from 1 to 6
-			 output.append(" Dice ").append(i + 1).append(": ").append(diceRolls[i]).append("\n");
+			output.append(" Dice ").append(i + 1).append(": ").append(diceRolls[i]).append("\n");
 		}
 
 		return output.toString();
