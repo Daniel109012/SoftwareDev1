@@ -103,14 +103,14 @@ public class DicePokerGame {
 			if(bank == 1) {
 				maxBet = 1;
 			}else if(bank > 4) 
-			{maxBet = 4;}
+			{maxBet = 4;} //max bet allowed 
 			else{maxBet = bank - 1;}
 			
 			Object[] gameMessage  = {
 					"Round " + (bets + 1) + ":\nYou have $" + bank + ". The bet costs 1$. Enter your Bet (1$ to " + maxBet + "$):",betButton
 			};
 			
-
+			//allows user to quit mid game or to bet
 			Object[] buttons = {"Bet", "Quit"};
 
 			int option = JOptionPane.showOptionDialog(
@@ -124,7 +124,7 @@ public class DicePokerGame {
 					buttons[0]
 					);
 
-
+			//asks the user to verify if quit is selected
 			if (option == JOptionPane.NO_OPTION || option == JOptionPane.CLOSED_OPTION) {
 				int confirmExit = JOptionPane.showConfirmDialog(
 						null,
@@ -135,22 +135,23 @@ public class DicePokerGame {
 
 				if (confirmExit == JOptionPane.YES_OPTION) {
 					Results();//show results so far
-					System.exit(0);//exit
+					System.exit(0);//exit ends the game
 				}else{
 					continue;//stay in game
 				}
 			}
 
 			String input = betButton.getText().trim();
-
+			
+			//validate input
 			if( input.isBlank() || !input.matches("\\d+")) continue;
 			bet = Integer.parseInt(input);
-			
+	
 			if(bet < 1 || bet > maxBet) {
 				JOptionPane.showMessageDialog(null, "your Bet must be between 1$ and " +  maxBet + "$");
 				continue;
 			}
-			bank--;
+			bank--;//subtract bet cost
 
 			valid = true;
 		}
